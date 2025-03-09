@@ -1,0 +1,65 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/simulation/modelsim
+vcomplementoDos
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1741539673
+!i10b 1
+!s100 36S3IT<KFGCF43mhh]59Y3
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+ITAnPU:CK:7Z0;UOM0RKhg3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1741538180
+8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos.sv
+FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos.sv
+!i122 0
+L0 1 8
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1741539673.000000
+!s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3
+Z9 tCvgOpt 0
+ncomplemento@dos
+vcomplementoDos_tb
+R1
+R2
+!i10b 1
+!s100 _W5WX9JcP<O4Ucc^XBI=h2
+R3
+IFRIUFz6laLPhP0NmT0bMA3
+R4
+S1
+R0
+w1741539627
+8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos_tb.sv
+FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos_tb.sv
+!i122 1
+L0 1 150
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/complementoDos_tb.sv|
+!i113 1
+R7
+R8
+R9
+ncomplemento@dos_tb
