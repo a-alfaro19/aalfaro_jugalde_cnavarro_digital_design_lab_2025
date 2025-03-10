@@ -1,4 +1,4 @@
-module bin2bcd (
+module DecodificadorBinario (
     input logic [3:0] binary_in,
     output logic [7:0] bcd_out
 );
