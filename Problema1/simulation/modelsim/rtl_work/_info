@@ -11,7 +11,7 @@ cModel Technology
 Z0 dD:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/simulation/modelsim
 vDecodificadorBinario
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-!s110 1741576550
+!s110 1741576809
 !i10b 1
 !s100 ]3hfg^S`f6bC3LHg_DjBU0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -28,7 +28,7 @@ Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-!s108 1741576550.000000
+!s108 1741576809.000000
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv|
 !i113 1
@@ -38,15 +38,15 @@ Z7 tCvgOpt 0
 n@decodificador@binario
 vDecodificadorBinario_tb
 R1
-!s110 1741576551
+!s110 1741576810
 !i10b 1
-!s100 3o;W15mel^1OQK[_FYPS[1
+!s100 5iS>jVz`laeaSBVLiMHdo1
 R2
-IEj1SAPQFGzOaC?VQkEREZ3
+IjS<1e?P8XAEodZ6fbXACE3
 R3
 S1
 R0
-w1741576531
+w1741576700
 8D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv
 FD:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv
 !i122 1
@@ -55,7 +55,7 @@ R4
 r1
 !s85 0
 31
-!s108 1741576551.000000
+!s108 1741576810.000000
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv|
 !i113 1

@@ -12,29 +12,29 @@
 # 
 # vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:15:50 on Mar 09,2025
+# Start time: 21:20:09 on Mar 09,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1" D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv 
 # -- Compiling module DecodificadorBinario
 # 
 # Top level modules:
 # 	DecodificadorBinario
-# End time: 21:15:50 on Mar 09,2025, Elapsed time: 0:00:00
+# End time: 21:20:09 on Mar 09,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:15:51 on Mar 09,2025
+# Start time: 21:20:10 on Mar 09,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1" D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv 
 # -- Compiling module DecodificadorBinario_tb
 # 
 # Top level modules:
 # 	DecodificadorBinario_tb
-# End time: 21:15:51 on Mar 09,2025, Elapsed time: 0:00:00
+# End time: 21:20:10 on Mar 09,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  DecodificadorBinario_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" DecodificadorBinario_tb 
-# Start time: 21:15:51 on Mar 09,2025
+# Start time: 21:20:10 on Mar 09,2025
 # Loading sv_std.std
 # Loading work.DecodificadorBinario_tb
 # Loading work.DecodificadorBinario
@@ -53,5 +53,5 @@
 # Entrada: 1100, Salida BCD: 00010010
 # Entrada: 1110, Salida BCD: 00010100
 # Entrada: 1111, Salida BCD: 00010101
-# End time: 21:17:18 on Mar 09,2025, Elapsed time: 0:01:27
+# End time: 21:21:11 on Mar 09,2025, Elapsed time: 0:01:01
 # Errors: 0, Warnings: 0
