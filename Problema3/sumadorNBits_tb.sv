@@ -1,10 +1,17 @@
 module sumadorNBits_tb();
+
 	parameter N = 8;
 	logic [N-1:0] a, b, s;
 	logic c_in, c_out;
 	bit all_tests_passed = 1;
 	
-	sumadorNBits #(N) modulo(a, b, c_in, s, c_out);
+	sumadorNBits #(N) modulo (
+		.a(a), 
+		.b(b), 
+		.c_in(c_in), 
+		.s(s), 
+		.c_out(c_out)
+	);
 	
 	initial begin
 		$display("Tiempo | a        | b        | c_in | s        | c_out");

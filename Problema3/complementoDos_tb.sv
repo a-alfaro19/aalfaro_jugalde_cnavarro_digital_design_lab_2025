@@ -1,17 +1,19 @@
 module complementoDos_tb();
+
 	parameter N = 4;
 	logic [N-1:0] a, y;
+	
 	bit all_tests_passed = 1;
 	
-	complementoDos #(N) modulo(a,y);
+	complementoDos #(.N(N)) modulo(
+		.a(a),
+		.y(y)
+	);
 	
 	initial begin
 		$display("Tiempo | a      | y (Complemento a Dos)");
 		$monitor("%0t    | %b | %b", $time, a, y);
 	
-		// Casos de prueba
-		
-		
 		// Casos para números negativos
 		a = 4'b1001; #10;
 		assert (y === 4'b0111) else begin 
@@ -69,43 +71,43 @@ module complementoDos_tb();
 
 		// Casos para números positivos
 		a = 4'b0001; #10; 
-		assert (y === 4'b0001) else begin 
+		assert (y === 4'b1111) else begin 
 			 $error("Prueba 009 fallida."); 
 			 all_tests_passed = 0;
 		end
 
 		a = 4'b0010; #10; 
-		assert (y === 4'b0010) else begin 
+		assert (y === 4'b1110) else begin 
 			 $error("Prueba 010 fallida."); 
 			 all_tests_passed = 0;
 		end
 
 		a = 4'b0011; #10; 
-		assert (y === 4'b0011) else begin 
+		assert (y === 4'b1101) else begin 
 			 $error("Prueba 011 fallida."); 
 			 all_tests_passed = 0;
 		end
 
 		a = 4'b0100; #10; 
-		assert (y === 4'b0100) else begin 
+		assert (y === 4'b1100) else begin 
 			 $error("Prueba 012 fallida."); 
 			 all_tests_passed = 0;
 		end
 
 		a = 4'b0101; #10; 
-		assert (y === 4'b0101) else begin 
+		assert (y === 4'b1011) else begin 
 			 $error("Prueba 013 fallida."); 
 			 all_tests_passed = 0;
 		end
 
-		a = 4'b0110; #10; 
+		a = 4'b1010; #10; 
 		assert (y === 4'b0110) else begin 
 			 $error("Prueba 014 fallida."); 
 			 all_tests_passed = 0;
 		end
 
 		a = 4'b0111; #10; 
-		assert (y === 4'b0111) else begin 
+		assert (y === 4'b1001) else begin 
 			 $error("Prueba 015 fallida."); 
 			 all_tests_passed = 0;
 		end
@@ -136,7 +138,7 @@ module complementoDos_tb();
 		end
 
 		a = 4'b0111; #10; 
-		assert (y === 4'b0111) else begin 
+		assert (y === 4'b1001) else begin 
 			 $error("Prueba 020 fallida."); 
 			 all_tests_passed = 0;
 		end

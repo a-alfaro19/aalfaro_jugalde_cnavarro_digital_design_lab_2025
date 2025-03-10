@@ -1,18 +1,29 @@
-# Quartus files
+# Archivos y carpetas de resultados
 output_files/
-db/
+simulation/
 incremental_db/
-quartus.db/
+db/
 
-# Configuración de proyecto
-*.qsf
-*.qpf
-
-# Archivos temporales y de respaldo
-*.bak
-*.log
+# Archivos de caché y temporales
+*.cdb
+*.sdb
 *.tmp
-*.swp
+*.log
+*.sta
+*.syn
+*.fit
+*.jic
+*.sof
+*.map
+*.rpt
+*.bak
+
+# Archivos de base de datos
+*.db
+
+# Archivos de simulación generados
+*.vcd
+*.wlf
 
 # Configuración de editor
 .vscode/

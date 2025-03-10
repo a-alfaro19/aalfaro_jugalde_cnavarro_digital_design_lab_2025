@@ -3,8 +3,6 @@ module complementoDos #(parameter N=8) (
 	output logic [N-1:0] y
 );
 
-	always_comb
-		if (a[N-1]) y = ~a + 1;
-		else y = a;
+	 assign y = ~a + 1;
 		
 endmodule

@@ -4,6 +4,7 @@ module sumadorNBits #(parameter N=8) (
 	output logic [N-1:0] s,
 	output logic c_out
 );
+
 	logic [N:0] carries; // Carries generados por la suma en cadena
 	assign carries[0] = c_in; // Asignar carry inicial
 	
@@ -11,11 +12,11 @@ module sumadorNBits #(parameter N=8) (
 	generate
 		for (i = 0; i < N; i++) begin : sumasUnBit
 			sumadorUnBit sumadorUnBit(
-				a[i], // Numero A
-				b[i], // Numero B
-				carries[i], // Carry
-				s[i], // Resultado de suma
-				carries[i+1] // Carry del resultado
+				.a(a[i]), // Numero A
+				.b(b[i]), // Numero B
+				.c_in(carries[i]), // Carry
+				.s(s[i]), // Resultado de suma
+				.c_out(carries[i+1]) // Carry del resultado
 			);
 		end
 	endgenerate
