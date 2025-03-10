@@ -56,16 +56,9 @@ set_global_assignment -name VHDL_FILE sumador_top.vhd
 set_location_assignment PIN_AB30 -to "SW(0)"
 set_location_assignment PIN_Y27 -to "SW(1)"
 set_location_assignment PIN_AB28 -to "SW(2)"
-set_location_assignment PIN_AA24 -to "LEDR(0)"
-set_location_assignment PIN_AB23 -to "LEDR(1)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SW(0)"
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SW(1)"
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SW(2)"
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "LEDR(0)"
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "LEDR(1)"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -79,3 +72,37 @@ set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id sumador_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME sumador_tb -section_id sumador_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE sumador_tb.vhd -section_id sumador_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE sumador_display.vhd
+set_location_assignment PIN_AC30 -to "SW(3)"
+set_location_assignment PIN_W25 -to "SW(4)"
+set_location_assignment PIN_V25 -to "SW(5)"
+set_location_assignment PIN_AC28 -to "SW(6)"
+set_location_assignment PIN_AD30 -to "SW(7)"
+set_location_assignment PIN_W17 -to "SEG(0)"
+set_location_assignment PIN_V18 -to "SEG(1)"
+set_location_assignment PIN_AG17 -to "SEG(2)"
+set_location_assignment PIN_AG16 -to "SEG(3)"
+set_location_assignment PIN_AH17 -to "SEG(4)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(0)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(1)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(2)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(3)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(4)"
+set_location_assignment PIN_AG18 -to "SEG(5)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(5)"
+set_location_assignment PIN_AH18 -to "SEG(6)"
+set_location_assignment PIN_AF16 -to "SEG_COUT(0)"
+set_location_assignment PIN_V16 -to "SEG_COUT(1)"
+set_location_assignment PIN_AE16 -to "SEG_COUT(2)"
+set_location_assignment PIN_AD17 -to "SEG_COUT(3)"
+set_location_assignment PIN_AE18 -to "SEG_COUT(4)"
+set_location_assignment PIN_AE17 -to "SEG_COUT(5)"
+set_location_assignment PIN_V17 -to "SEG_COUT(6)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG(6)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(0)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(1)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(2)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(3)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(4)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(5)"
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to "SEG_COUT(6)"
