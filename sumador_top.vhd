@@ -3,27 +3,29 @@ use IEEE.STD_LOGIC_1164.all;
 
 entity sumador_top is
     port (
-        SW  : in  STD_LOGIC_VECTOR(2 downto 0); 
-        LEDR : out STD_LOGIC_VECTOR(1 downto 0) 
+        SW  : in  STD_LOGIC_VECTOR(8 downto 0); 
+        LEDR : out STD_LOGIC_VECTOR(4 downto 0) 
     );
 end entity sumador_top;
 
 architecture sint of sumador_top is
-    component sumador
+    component sumador_4_bits
         port (
-            a, b, cin : in STD_LOGIC;
-            s, cout   : out STD_LOGIC
+            A, B  : in  STD_LOGIC_VECTOR(3 downto 0);
+            Cin   : in  STD_LOGIC;
+            S     : out STD_LOGIC_VECTOR(3 downto 0);
+            Cout  : out STD_LOGIC
         );
     end component;
 begin
   
   
-    FA_inst: sumador port map(
-        a    => SW(0),
-        b    => SW(1),
-        cin  => SW(2),
-        s    => LEDR(0),
-        cout => LEDR(1)
+     SUMA: sumador_4_bits port map(
+        A    => SW(3 downto 0),
+        B    => SW(7 downto 4),
+        Cin  => SW(8),
+        S    => LEDR(3 downto 0),
+        Cout => LEDR(4)
     );
 	 
 end architecture sint;
