@@ -40,7 +40,7 @@ begin
      SUMA: sumador_4_bits port map(
         A    => SW(3 downto 0),
         B    => SW(7 downto 4),
-        Cin  => SW(8),
+        Cin  => '0',
         S    => S,
         Cout => Cout
     );
