@@ -5,9 +5,9 @@ module DecodificadorBinario (
 
 	logic [3:0] tens, ones;
 
-	assign tens = (binary_in >= 4'd10) ? 4'd1 : 4'd0;
+	assign tens = (binary_in >= 10) ? 1 : 0;
 
-	assign ones = (binary_in >= 4'd10) ? (binary_in - 4'd10) : binary_in;
+	assign ones = (binary_in >= 10) ? (binary_in - 10) : binary_in;
 
 	assign bcd_out = {tens, ones};
 
