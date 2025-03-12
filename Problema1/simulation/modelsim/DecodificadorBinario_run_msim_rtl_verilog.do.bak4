@@ -1,0 +1,12 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv}
+vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/Top.sv}
+vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DisplayController.sv}
+vlog -sv -work work +incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1 {D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/BCD_to_7Seg.sv}
+

@@ -1,0 +1,20 @@
+# Quartus files
+output_files/
+db/
+incremental_db/
+quartus.db/
+
+# Configuración de proyecto
+*.qsf
+*.qpf
+
+# Archivos temporales y de respaldo
+*.bak
+*.log
+*.tmp
+*.swp
+
+# Configuración de editor
+.vscode/
+.idea/
+.settings/
