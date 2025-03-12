@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "display_segments[0]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[1]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[2]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[3]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[4]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[5]",
+					"strict" : false
+				},
+				{
+					"name" : "display_segments[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reset_sw",
+					"strict" : false
+				},
+				{
+					"name" : "initial_btn1",
+					"strict" : false
+				},
+				{
+					"name" : "initial_btn2",
+					"strict" : false
+				},
+				{
+					"name" : "initial_btn3",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "decrement_btn",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

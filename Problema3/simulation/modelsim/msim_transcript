@@ -13,7 +13,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work altera_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_primitives.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:19 on Mar 11,2025
+# Start time: 01:10:51 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work altera_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_primitives.v 
 # -- Compiling module global
 # -- Compiling module carry
@@ -95,7 +95,7 @@
 # 	alt_iobuf_diff
 # 	alt_bidir_diff
 # 	alt_bidir_buf
-# End time: 16:08:19 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:10:52 on Mar 12,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/lpm_ver
@@ -106,7 +106,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work lpm_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/220model.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:20 on Mar 11,2025
+# Start time: 01:10:52 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work lpm_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/220model.v 
 # -- Compiling module LPM_MEMORY_INITIALIZATION
 # -- Compiling module LPM_HINT_EVALUATION
@@ -170,7 +170,7 @@
 # 	lpm_inpad
 # 	lpm_outpad
 # 	lpm_bipad
-# End time: 16:08:20 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:10:52 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/sgate_ver
@@ -181,7 +181,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work sgate_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:20 on Mar 11,2025
+# Start time: 01:10:52 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work sgate_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/sgate.v 
 # -- Compiling module oper_add
 # -- Compiling module oper_addsub
@@ -223,7 +223,7 @@
 # 	oper_decoder
 # 	oper_bus_mux
 # 	oper_latch
-# End time: 16:08:20 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:10:52 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/altera_mf_ver
@@ -234,7 +234,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work altera_mf_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_mf.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:20 on Mar 11,2025
+# Start time: 01:10:53 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work altera_mf_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_mf.v 
 # -- Compiling module lcell
 # -- Compiling module ALTERA_MF_MEMORY_INITIALIZATION
@@ -364,7 +364,7 @@
 # 	alt_fault_injection
 # 	sld_virtual_jtag_basic
 # 	altsource_probe
-# End time: 16:08:21 on Mar 11,2025, Elapsed time: 0:00:01
+# End time: 01:10:54 on Mar 12,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/altera_lnsim_ver
@@ -375,7 +375,7 @@
 # Modifying modelsim.ini
 # vlog -sv -work altera_lnsim_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_lnsim.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:21 on Mar 11,2025
+# Start time: 01:10:54 on Mar 12,2025
 # vlog -reportprogress 300 -sv -work altera_lnsim_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/altera_lnsim.sv 
 # -- Compiling package altera_lnsim_functions
 # -- Compiling package altera_generic_pll_functions
@@ -458,7 +458,7 @@
 # 	altera_iopll
 # 	fourteennm_altera_iopll
 # 	fourteennm_simple_iopll
-# End time: 16:08:21 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:10:54 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/cyclonev_ver
@@ -469,7 +469,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work cyclonev_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_atoms_ncrypt.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:21 on Mar 11,2025
+# Start time: 01:10:54 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_atoms_ncrypt.v 
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
@@ -483,19 +483,19 @@
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
 # 
 # Top level modules:
-# End time: 16:08:23 on Mar 11,2025, Elapsed time: 0:00:02
+# End time: 01:10:56 on Mar 12,2025, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 10
 # vlog -vlog01compat -work cyclonev_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_hmi_atoms_ncrypt.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:23 on Mar 11,2025
+# Start time: 01:10:56 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_hmi_atoms_ncrypt.v 
 # 
 # Top level modules:
-# End time: 16:08:23 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:10:58 on Mar 12,2025, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work cyclonev_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_atoms.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:23 on Mar 11,2025
+# Start time: 01:10:58 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_atoms.v 
 # -- Compiling UDP CYCLONEV_PRIM_DFFE
 # -- Compiling UDP CYCLONEV_PRIM_DFFEAS
@@ -635,7 +635,7 @@
 # 	cyclonev_mem_phy
 # 	cyclonev_oscillator
 # 	cyclonev_hps_interface_fpga2sdram
-# End time: 16:08:24 on Mar 11,2025, Elapsed time: 0:00:01
+# End time: 01:10:58 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/cyclonev_hssi_ver
@@ -646,15 +646,15 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work cyclonev_hssi_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_hssi_atoms_ncrypt.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:24 on Mar 11,2025
+# Start time: 01:10:59 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_hssi_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_hssi_atoms_ncrypt.v 
 # 
 # Top level modules:
-# End time: 16:08:25 on Mar 11,2025, Elapsed time: 0:00:01
+# End time: 01:11:00 on Mar 12,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work cyclonev_hssi_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_hssi_atoms.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:25 on Mar 11,2025
+# Start time: 01:11:00 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_hssi_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_hssi_atoms.v 
 # -- Compiling module cyclonev_hssi_8g_pcs_aggregate
 # -- Compiling module cyclonev_hssi_8g_rx_pcs
@@ -754,7 +754,7 @@
 # 	arriav_hssi_avmm_interface
 # 	arriav_hssi_pma_hi_pmaif
 # 	arriav_hssi_pma_hi_xcvrif
-# End time: 16:08:25 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:11:00 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlib verilog_libs/cyclonev_pcie_hip_ver
@@ -765,7 +765,7 @@
 # Modifying modelsim.ini
 # vlog -vlog01compat -work cyclonev_pcie_hip_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_pcie_hip_atoms_ncrypt.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:25 on Mar 11,2025
+# Start time: 01:11:01 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_pcie_hip_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/mentor/cyclonev_pcie_hip_atoms_ncrypt.v 
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
@@ -775,18 +775,18 @@
 # ** Warning: (vlog-2083) <protected>(<protected>): Carriage return (0x0D) is not followed by a newline (0x0A).
 # 
 # Top level modules:
-# End time: 16:08:27 on Mar 11,2025, Elapsed time: 0:00:02
+# End time: 01:11:03 on Mar 12,2025, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 6
 # vlog -vlog01compat -work cyclonev_pcie_hip_ver {c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_pcie_hip_atoms.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:27 on Mar 11,2025
+# Start time: 01:11:03 on Mar 12,2025
 # vlog -reportprogress 300 -vlog01compat -work cyclonev_pcie_hip_ver c:/intelfpga_lite/22.1std/quartus/eda/sim_lib/cyclonev_pcie_hip_atoms.v 
 # -- Compiling module cyclonev_hd_altpe2_hip_top
 # -- Compiling module arriav_hd_altpe2_hip_top
 # 
 # Top level modules:
 # 	cyclonev_hd_altpe2_hip_top
-# End time: 16:08:27 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:11:03 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # if {[file exists rtl_work]} {
@@ -798,34 +798,50 @@
 # vmap work rtl_work 
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv}
+# vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:27 on Mar 11,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3" C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv 
+# Start time: 01:11:03 on Mar 12,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3" C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv 
 # -- Compiling module restador
 # 
 # Top level modules:
 # 	restador
-# End time: 16:08:27 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:11:03 on Mar 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:11:03 on Mar 12,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3" C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv 
+# -- Compiling module restador_fpga
+# 
+# Top level modules:
+# 	restador_fpga
+# End time: 01:11:03 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vlog -sv -work work +incdir+C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv}
+# vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 16:08:27 on Mar 11,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3" C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv 
+# Start time: 01:11:03 on Mar 12,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3" C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv 
 # -- Compiling module restador_tb
 # 
 # Top level modules:
 # 	restador_tb
-# End time: 16:08:27 on Mar 11,2025, Elapsed time: 0:00:00
+# End time: 01:11:03 on Mar 12,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  restador_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" restador_tb 
-# Start time: 16:08:27 on Mar 11,2025
+# Start time: 01:11:03 on Mar 12,2025
 # Loading sv_std.std
 # Loading work.restador_tb
 # Loading work.restador
+# ** Warning: (vsim-3015) [PCDPC] - Port size (3) does not match connection size (2) for port 'init_value'. The port definition is at: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv(5).
+#    Time: 0 ps  Iteration: 0  Instance: /restador_tb/uut_2_bits File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv Line: 24
+# ** Warning: (vsim-3015) [PCDPC] - Port size (3) does not match connection size (4) for port 'init_value'. The port definition is at: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv(5).
+#    Time: 0 ps  Iteration: 0  Instance: /restador_tb/uut_4_bits File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv Line: 34
+# ** Warning: (vsim-3015) [PCDPC] - Port size (3) does not match connection size (6) for port 'init_value'. The port definition is at: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv(5).
+#    Time: 0 ps  Iteration: 0  Instance: /restador_tb/uut_6_bits File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv Line: 44
 # 
 # add wave *
 # view structure
@@ -833,37 +849,17 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# =========================================
-# Iniciando testbench...
-# =========================================
-# Tiempo  | count_2 | count_4 | count_6 
-#                10000    | 11       | 1111       | 111111
-#                15000    | 10       | 1110       | 111110
-#                25000    | 01       | 1101       | 111101
-#                35000    | 00       | 1100       | 111100
-#                45000    | 11       | 1011       | 111011
-#                55000    | 10       | 1010       | 111010
-#                65000    | 01       | 1001       | 111001
-#                75000    | 00       | 1000       | 111000
-#                85000    | 11       | 0111       | 110111
-#                95000    | 10       | 0110       | 110110
-#               105000    | 01       | 0101       | 110101
-#               115000    | 00       | 0100       | 110100
-#               125000    | 11       | 0011       | 110011
-#               135000    | 10       | 0010       | 110010
-#               145000    | 01       | 0001       | 110001
-#               155000    | 00       | 0000       | 110000
-#               165000    | 11       | 1111       | 101111
-#               175000    | 10       | 1110       | 101110
-#               185000    | 01       | 1101       | 101101
-#               195000    | 00       | 1100       | 101100
-#               205000    | 11       | 1011       | 101011
-# =========================================
-# Testbench finalizado.
-# =========================================
-# ** Note: $stop    : C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv(57)
-#    Time: 210 ns  Iteration: 0  Instance: /restador_tb
-# Break in Module restador_tb at C:/Users/User/Documents/GitHub/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv line 57
-run
-# End time: 16:14:42 on Mar 11,2025, Elapsed time: 0:06:15
-# Errors: 0, Warnings: 0
+# Time: 0 | out 1 (2 bits): 11 | out 2 (4 bits): 0111 | out 3 (6 bits): 000111
+# Time: 25000 | out 1 (2 bits): 10 | out 2 (4 bits): 0110 | out 3 (6 bits): 000110
+# Time: 40000 | out 1 (2 bits): 11 | out 2 (4 bits): 0111 | out 3 (6 bits): 000111
+# Time: 65000 | out 1 (2 bits): 10 | out 2 (4 bits): 0110 | out 3 (6 bits): 000110
+# Time: 75000 | out 1 (2 bits): 01 | out 2 (4 bits): 0101 | out 3 (6 bits): 000101
+# Time: 85000 | out 1 (2 bits): 00 | out 2 (4 bits): 0100 | out 3 (6 bits): 000100
+# Time: 95000 | out 1 (2 bits): 11 | out 2 (4 bits): 0011 | out 3 (6 bits): 000011
+# Time: 105000 | out 1 (2 bits): 10 | out 2 (4 bits): 0010 | out 3 (6 bits): 000010
+# ** Note: $finish    : C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv(70)
+#    Time: 110 ns  Iteration: 0  Instance: /restador_tb
+# 1
+# Break in Module restador_tb at C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv line 70
+# End time: 01:11:24 on Mar 12,2025, Elapsed time: 0:00:21
+# Errors: 0, Warnings: 3

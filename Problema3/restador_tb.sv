@@ -1,60 +1,78 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 module restador_tb ();
 	
+	// Parámetros para el test
+   parameter N1 = 2;
+	parameter N2 = 4;
+	parameter N3 = 6;
+	
+	// Entradas
 	logic clk;
-	logic rst;
+	logic reset;
+	logic enable;
 	
-	// Señales para los diferentes tamaños de contador
-	logic [1:0] count_2; // Para N=2 bits
-	logic [3:0] count_4; // Para N=4 bits
-	logic [5:0] count_6; // Para N=6 bits
-
-	// Instancias del módulo con diferentes valores de N
-	decrement_counter #(.N(2)) uut_2 (
-		.clk(clk),
-		.rst(rst),
-		.count(count_2)
-	);
-
-	decrement_counter #(.N(4)) uut_4 (
-		.clk(clk),
-		.rst(rst),
-		.count(count_4)
-	);
-
-	decrement_counter #(.N(6)) uut_6 (
-		.clk(clk),
-		.rst(rst),
-		.count(count_6)
-	);
-
-	// Generación del reloj (Período = 10 unidades de tiempo)
-	always #5 clk = ~clk;
+	// Salida
+   logic [N1-1:0] out1;
+	logic [N2-1:0] out2;
+	logic [N3-1:0] out3;
 	
-	initial begin 
-		// Mensaje de inicio
-		$display("=========================================");
-		$display("Iniciando testbench...");
-		$display("=========================================");
-
+	
+	// Instanciamos el restador
+	restador #(
+	  .N(N1)
+	) uut_2_bits (
+	  .clk(clk),
+	  .reset(reset),
+	  .decrement_btn(enable),
+	  .init_value({N1{1'b1}}),
+	  .out(out1)
+	);
+	
+	restador #(
+	  .N(N2)
+	) uut_4_bits (
+	  .clk(clk),
+	  .reset(reset),
+	  .decrement_btn(enable),
+	  .init_value({N2{1'b1}}),
+	  .out(out2)
+	);
+	
+	restador #(
+	  .N(N3)
+	) uut_6_bits (
+	  .clk(clk),
+	  .reset(reset),
+	  .decrement_btn(enable),
+	  .init_value({N3{1'b1}}),
+	  .out(out3)
+	);
+	
+	// Generar el reloj
+   always #5 clk = ~clk;  // Ciclo de reloj de 10 unidades de tiempo
+	
+	initial begin
 		// Inicialización
 		clk = 0;
-		rst = 1;   // Activar reset
-		#10 rst = 0; // Desactivar reset
+		reset = 0;
+		enable = 0;
 
-		// Monitoreo de las señales en consola
-		$display("Tiempo  | count_2 | count_4 | count_6 ");
-		$monitor("%t    | %b       | %b       | %b", 
-				  $time, count_2, count_4, count_6);
+		// Prueba para reset asíncrono
+		#10 reset = 1;  // Activamos el reset asincrónico
+		#10 enable = 1;    // Habilitamos el restador
+		#10 enable = 0;    // Deshabilitamos el restador
+		#10 reset = 0;   // Activamos el reset asincrónico
+		#10 reset = 1;   // Desactivamos el reset asincrónico
+		#10 enable = 1;    // Habilitamos el restador
 
-		// Esperar suficientes ciclos para ver la cuenta regresiva
-		#200; 
+		// Fin de la simulación
+		#50; $finish;
+	end
 
-		$display("=========================================");
-		$display("Testbench finalizado.");
-		$display("=========================================");
-		$stop;
-		end
+   initial begin
+		// Chequeo de resultados
+		$monitor("Time: %0t | out 1 (2 bits): %b | out 2 (4 bits): %b | out 3 (6 bits): %b", $time, out1, out2, out3);
+	end
 	
 endmodule
