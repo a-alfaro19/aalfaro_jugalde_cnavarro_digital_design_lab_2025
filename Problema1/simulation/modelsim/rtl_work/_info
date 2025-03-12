@@ -11,7 +11,7 @@ cModel Technology
 Z0 dD:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/simulation/modelsim
 vBCD_to_7Seg
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1741754211
+Z2 !s110 1741754445
 !i10b 1
 !s100 Vl=>ljekZP<7111oX<jH]1
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -28,7 +28,7 @@ Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1741754211.000000
+Z6 !s108 1741754445.000000
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/BCD_to_7Seg.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/BCD_to_7Seg.sv|
 !i113 1
@@ -38,7 +38,7 @@ Z9 tCvgOpt 0
 n@b@c@d_to_7@seg
 vDecodificadorBinario
 R1
-R2
+Z10 !s110 1741754444
 !i10b 1
 !s100 7O:13[OYB<_OHY6hL=jH00
 R3
@@ -55,7 +55,7 @@ R5
 r1
 !s85 0
 31
-R6
+Z11 !s108 1741754444.000000
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario.sv|
 !i113 1
@@ -65,7 +65,7 @@ R9
 n@decodificador@binario
 vDecodificadorBinario_tb
 R1
-!s110 1741754212
+R2
 !i10b 1
 !s100 5iS>jVz`laeaSBVLiMHdo1
 R3
@@ -77,12 +77,12 @@ w1741754186
 8D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv
 FD:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv
 !i122 4
-Z10 L0 1 46
+Z12 L0 1 46
 R5
 r1
 !s85 0
 31
-!s108 1741754212.000000
+R6
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DecodificadorBinario_tb.sv|
 !i113 1
@@ -104,7 +104,7 @@ w1741732037
 8D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DisplayController.sv
 FD:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/DisplayController.sv
 !i122 2
-R10
+R12
 R5
 r1
 !s85 0
@@ -119,7 +119,7 @@ R9
 n@display@controller
 vTop
 R1
-R2
+R10
 !i10b 1
 !s100 1e`MM8fZg6e_AKT;UE=8;1
 R3
@@ -136,7 +136,7 @@ R5
 r1
 !s85 0
 31
-R6
+R11
 !s107 D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/Top.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1|D:/PrograP/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema1/Top.sv|
 !i113 1
