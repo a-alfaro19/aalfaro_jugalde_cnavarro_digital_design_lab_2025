@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Restador
-Wed Mar 12 02:16:44 2025
+Wed Mar 12 12:16:51 2025
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -14,11 +14,13 @@ Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: restador:uut
- 10. Port Connectivity Checks: "restador:uut"
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  9. Parameter Settings for User Entity Instance: Top-level Entity: |restador_fpga
+ 10. Parameter Settings for User Entity Instance: restador:uut
+ 11. Parameter Settings for User Entity Instance: seven_segment_decoder:decoder
+ 12. Port Connectivity Checks: "restador:uut"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -45,14 +47,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Mar 12 02:16:44 2025          ;
+; Analysis & Synthesis Status     ; Successful - Wed Mar 12 12:16:51 2025          ;
 ; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                   ; Restador                                       ;
 ; Top-level Entity Name           ; restador_fpga                                  ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
 ; Total registers                 ; 6                                              ;
-; Total pins                      ; 13                                             ;
+; Total pins                      ; 19                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
 ; Total DSP Blocks                ; 0                                              ;
@@ -177,45 +179,47 @@ https://fpgasoftware.intel.com/eula.
 ; restador.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv             ;         ;
 ; restador_fpga.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv        ;         ;
 ; seven_segment_decode.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv ;         ;
+; bin2bcd.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv              ;         ;
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                       ;
-+---------------------------------------------+---------------------+
-; Resource                                    ; Usage               ;
-+---------------------------------------------+---------------------+
-; Estimate of Logic utilization (ALMs needed) ; 18                  ;
-;                                             ;                     ;
-; Combinational ALUT usage for logic          ; 22                  ;
-;     -- 7 input functions                    ; 0                   ;
-;     -- 6 input functions                    ; 13                  ;
-;     -- 5 input functions                    ; 0                   ;
-;     -- 4 input functions                    ; 3                   ;
-;     -- <=3 input functions                  ; 6                   ;
-;                                             ;                     ;
-; Dedicated logic registers                   ; 6                   ;
-;                                             ;                     ;
-; I/O pins                                    ; 13                  ;
-;                                             ;                     ;
-; Total DSP Blocks                            ; 0                   ;
-;                                             ;                     ;
-; Maximum fan-out node                        ; restador:uut|out[3] ;
-; Maximum fan-out                             ; 13                  ;
-; Total fan-out                               ; 152                 ;
-; Average fan-out                             ; 2.81                ;
-+---------------------------------------------+---------------------+
++----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                          ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 19                     ;
+;                                             ;                        ;
+; Combinational ALUT usage for logic          ; 31                     ;
+;     -- 7 input functions                    ; 0                      ;
+;     -- 6 input functions                    ; 7                      ;
+;     -- 5 input functions                    ; 8                      ;
+;     -- 4 input functions                    ; 11                     ;
+;     -- <=3 input functions                  ; 5                      ;
+;                                             ;                        ;
+; Dedicated logic registers                   ; 6                      ;
+;                                             ;                        ;
+; I/O pins                                    ; 19                     ;
+;                                             ;                        ;
+; Total DSP Blocks                            ; 0                      ;
+;                                             ;                        ;
+; Maximum fan-out node                        ; restador:uut|out[5]~10 ;
+; Maximum fan-out                             ; 17                     ;
+; Total fan-out                               ; 192                    ;
+; Average fan-out                             ; 2.56                   ;
++---------------------------------------------+------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                               ;
-+------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-----------------------+--------------+
-; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Entity Name           ; Library Name ;
-+------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-----------------------+--------------+
-; |restador_fpga                     ; 22 (0)              ; 6 (0)                     ; 0                 ; 0          ; 13   ; 0            ; |restador_fpga                               ; restador_fpga         ; work         ;
-;    |restador:uut|                  ; 15 (15)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |restador_fpga|restador:uut                  ; restador              ; work         ;
-;    |seven_segment_decoder:decoder| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |restador_fpga|seven_segment_decoder:decoder ; seven_segment_decoder ; work         ;
-+------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-----------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                           ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                      ; Entity Name           ; Library Name ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+-----------------------+--------------+
+; |restador_fpga                     ; 31 (0)              ; 6 (0)                     ; 0                 ; 0          ; 19   ; 0            ; |restador_fpga                                           ; restador_fpga         ; work         ;
+;    |restador:uut|                  ; 15 (15)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |restador_fpga|restador:uut                              ; restador              ; work         ;
+;    |seven_segment_decoder:decoder| ; 16 (13)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |restador_fpga|seven_segment_decoder:decoder             ; seven_segment_decoder ; work         ;
+;       |bin2bcd:dut|                ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |restador_fpga|seven_segment_decoder:decoder|bin2bcd:dut ; bin2bcd               ; work         ;
++------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -229,9 +233,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 6     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 6     ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |restador_fpga ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 6     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------------+
@@ -244,13 +258,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "restador:uut"                                                                                                                                                                         ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type  ; Severity ; Details                                                                                                                                                                          ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; init_value ; Input ; Warning  ; Input port expression (6 bits) is wider than the input port (3 bits) it drives.  The 3 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seven_segment_decoder:decoder ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 6     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "restador:uut"           ;
++------------------+-------+----------+--------------+
+; Port             ; Type  ; Severity ; Details      ;
++------------------+-------+----------+--------------+
+; init_value[4..3] ; Input ; Info     ; Stuck at GND ;
+; init_value[1]    ; Input ; Info     ; Stuck at GND ;
++------------------+-------+----------+--------------+
 
 
 +-----------------------------------------------------+
@@ -259,17 +284,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 6                           ;
-;     ENA CLR           ; 6                           ;
-; arriav_lcell_comb     ; 23                          ;
-;     normal            ; 23                          ;
+;     CLR               ; 6                           ;
+; arriav_lcell_comb     ; 32                          ;
+;     normal            ; 32                          ;
 ;         1 data inputs ; 1                           ;
-;         3 data inputs ; 6                           ;
-;         4 data inputs ; 3                           ;
-;         6 data inputs ; 13                          ;
-; boundary_port         ; 13                          ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 11                          ;
+;         5 data inputs ; 8                           ;
+;         6 data inputs ; 7                           ;
+; boundary_port         ; 19                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 2.21                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.80                        ;
 +-----------------------+-----------------------------+
 
 
@@ -288,7 +314,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Wed Mar 12 02:16:36 2025
+    Info: Processing started: Wed Mar 12 12:16:42 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Restador -c Restador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -300,25 +326,29 @@ Info (12021): Found 1 design units, including 1 entities, in source file restado
     Info (12023): Found entity 1: restador_fpga File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file seven_segment_decode.sv
     Info (12023): Found entity 1: seven_segment_decoder File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bin2bcd.sv
+    Info (12023): Found entity 1: bin2bcd File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv Line: 1
 Info (12127): Elaborating entity "restador_fpga" for the top level hierarchy
-Info (12128): Elaborating entity "restador" for hierarchy "restador:uut" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv Line: 32
+Info (12128): Elaborating entity "restador" for hierarchy "restador:uut" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at restador.sv(12): truncated value with size 32 to match size of target (6) File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 12
 Info (12128): Elaborating entity "seven_segment_decoder" for hierarchy "seven_segment_decoder:decoder" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv Line: 38
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "bin2bcd" for hierarchy "seven_segment_decoder:decoder|bin2bcd:dut" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv Line: 16
+Warning (10230): Verilog HDL assignment warning at bin2bcd.sv(11): truncated value with size 32 to match size of target (4) File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv Line: 11
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "restador:uut|out[0]" is converted into an equivalent circuit using register "restador:uut|out[0]~_emulated" and latch "restador:uut|out[0]~1" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 11
-    Warning (13310): Register "restador:uut|out[1]" is converted into an equivalent circuit using register "restador:uut|out[1]~_emulated" and latch "restador:uut|out[1]~5" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 11
-    Warning (13310): Register "restador:uut|out[2]" is converted into an equivalent circuit using register "restador:uut|out[2]~_emulated" and latch "restador:uut|out[2]~9" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 11
+    Warning (13310): Register "restador:uut|out[0]" is converted into an equivalent circuit using register "restador:uut|out[0]~_emulated" and latch "restador:uut|out[0]~1" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 10
+    Warning (13310): Register "restador:uut|out[2]" is converted into an equivalent circuit using register "restador:uut|out[2]~_emulated" and latch "restador:uut|out[2]~5" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 10
+    Warning (13310): Register "restador:uut|out[5]" is converted into an equivalent circuit using register "restador:uut|out[5]~_emulated" and latch "restador:uut|out[5]~9" File: C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv Line: 10
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 35 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 22 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4921 megabytes
-    Info: Processing ended: Wed Mar 12 02:16:44 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:23
+Info (21057): Implemented 50 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 31 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4889 megabytes
+    Info: Processing ended: Wed Mar 12 12:16:51 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:22
 
 

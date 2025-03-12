@@ -47,6 +47,8 @@ vmap work rtl_work
 
 vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv}
 vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv}
+vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv}
+vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv}
 
 vlog -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3 {C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv}
 

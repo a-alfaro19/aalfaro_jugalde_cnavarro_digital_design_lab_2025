@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Wed Mar 12 02:16:44 2025
+Analysis & Synthesis Status : Successful - Wed Mar 12 12:16:51 2025
 Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 Revision Name : Restador
 Top-level Entity Name : restador_fpga
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 6
-Total pins : 13
+Total pins : 19
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

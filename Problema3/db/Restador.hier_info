@@ -1,44 +1,50 @@
 |restador_fpga
-clk => clk.IN1
-reset_sw => _.IN1
-decrement_btn => _.IN1
+reset_sw => reset_sw.IN1
+decrement_btn => decrement_btn.IN1
 initial_btn1 => init_value[0].IN1
-initial_btn2 => init_value[1].IN1
-initial_btn3 => init_value[2].IN1
-display_segments[0] <= seven_segment_decoder:decoder.segments
-display_segments[1] <= seven_segment_decoder:decoder.segments
-display_segments[2] <= seven_segment_decoder:decoder.segments
-display_segments[3] <= seven_segment_decoder:decoder.segments
-display_segments[4] <= seven_segment_decoder:decoder.segments
-display_segments[5] <= seven_segment_decoder:decoder.segments
-display_segments[6] <= seven_segment_decoder:decoder.segments
+initial_btn2 => init_value[2].IN1
+initial_btn3 => init_value[5].IN1
+segA[0] << seven_segment_decoder:decoder.segA
+segA[1] << seven_segment_decoder:decoder.segA
+segA[2] << seven_segment_decoder:decoder.segA
+segA[3] << seven_segment_decoder:decoder.segA
+segA[4] << seven_segment_decoder:decoder.segA
+segA[5] << seven_segment_decoder:decoder.segA
+segA[6] << seven_segment_decoder:decoder.segA
+segB[0] << seven_segment_decoder:decoder.segB
+segB[1] << seven_segment_decoder:decoder.segB
+segB[2] << seven_segment_decoder:decoder.segB
+segB[3] << seven_segment_decoder:decoder.segB
+segB[4] << seven_segment_decoder:decoder.segB
+segB[5] << seven_segment_decoder:decoder.segB
+segB[6] << seven_segment_decoder:decoder.segB
 
 
 |restador_fpga|restador:uut
-clk => out[0]~reg0.CLK
-clk => out[1]~reg0.CLK
-clk => out[2]~reg0.CLK
-clk => out[3]~reg0.CLK
-clk => out[4]~reg0.CLK
-clk => out[5]~reg0.CLK
 reset => out[0]~reg0.ALOAD
 reset => out[1]~reg0.ALOAD
 reset => out[2]~reg0.ALOAD
-reset => out[3]~reg0.ACLR
-reset => out[4]~reg0.ACLR
-reset => out[5]~reg0.ACLR
-decrement_btn => out[0]~reg0.ENA
-decrement_btn => out[5]~reg0.ENA
-decrement_btn => out[4]~reg0.ENA
-decrement_btn => out[3]~reg0.ENA
-decrement_btn => out[2]~reg0.ENA
-decrement_btn => out[1]~reg0.ENA
+reset => out[3]~reg0.ALOAD
+reset => out[4]~reg0.ALOAD
+reset => out[5]~reg0.ALOAD
+decrement_btn => out[0]~reg0.CLK
+decrement_btn => out[1]~reg0.CLK
+decrement_btn => out[2]~reg0.CLK
+decrement_btn => out[3]~reg0.CLK
+decrement_btn => out[4]~reg0.CLK
+decrement_btn => out[5]~reg0.CLK
 init_value[0] => out.DATAB
 init_value[0] => out[0]~reg0.ADATA
 init_value[1] => out.DATAB
 init_value[1] => out[1]~reg0.ADATA
 init_value[2] => out.DATAB
 init_value[2] => out[2]~reg0.ADATA
+init_value[3] => out.DATAB
+init_value[3] => out[3]~reg0.ADATA
+init_value[4] => out.DATAB
+init_value[4] => out[4]~reg0.ADATA
+init_value[5] => out.DATAB
+init_value[5] => out[5]~reg0.ADATA
 out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -48,18 +54,52 @@ out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |restador_fpga|seven_segment_decoder:decoder
-binary_input[0] => Decoder0.IN5
-binary_input[1] => Decoder0.IN4
-binary_input[2] => Decoder0.IN3
-binary_input[3] => Decoder0.IN2
-binary_input[4] => Decoder0.IN1
-binary_input[5] => Decoder0.IN0
-segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
-segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
-segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
-segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
-segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
-segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
-segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+count[0] => count[0].IN1
+count[1] => count[1].IN1
+count[2] => count[2].IN1
+count[3] => count[3].IN1
+count[4] => count[4].IN1
+count[5] => count[5].IN1
+segA[0] <= segA.DB_MAX_OUTPUT_PORT_TYPE
+segA[1] <= segA.DB_MAX_OUTPUT_PORT_TYPE
+segA[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+segA[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segA[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segA[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segA[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+segB[0] <= segB.DB_MAX_OUTPUT_PORT_TYPE
+segB[1] <= segB.DB_MAX_OUTPUT_PORT_TYPE
+segB[2] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+segB[3] <= WideOr7.DB_MAX_OUTPUT_PORT_TYPE
+segB[4] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segB[5] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segB[6] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|restador_fpga|seven_segment_decoder:decoder|bin2bcd:dut
+bin[0] => bcd[0].DATAIN
+bin[1] => LessThan2.IN8
+bin[1] => Add2.IN8
+bin[1] => bcd.DATAA
+bin[2] => LessThan1.IN8
+bin[2] => Add1.IN8
+bin[2] => bcd.DATAA
+bin[3] => LessThan0.IN6
+bin[3] => Add0.IN6
+bin[3] => bcd.DATAA
+bin[4] => LessThan0.IN5
+bin[4] => Add0.IN5
+bin[4] => bcd.DATAA
+bin[5] => LessThan0.IN4
+bin[5] => Add0.IN4
+bin[5] => bcd.DATAA
+bcd[0] <= bin[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd[1] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[2] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[3] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[4] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[5] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[6] <= bcd.DB_MAX_OUTPUT_PORT_TYPE
+bcd[7] <= <GND>
 
 

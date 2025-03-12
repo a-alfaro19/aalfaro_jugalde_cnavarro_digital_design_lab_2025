@@ -2,77 +2,70 @@
 
 module restador_tb ();
 	
-	// Parámetros para el test
-   parameter N1 = 2;
-	parameter N2 = 4;
-	parameter N3 = 6;
-	
-	// Entradas
-	logic clk;
 	logic reset;
-	logic enable;
+	logic decrement_btn;
+	logic [2:0] init_value_2b, init_value_4b, init_value_6b;
+	logic [1:0] out_2b; // Para la instancia de 2 bits
+	logic [3:0] out_4b; // Para la instancia de 4 bits
+	logic [5:0] out_6b; // Para la instancia de 6 bits
+
 	
-	// Salida
-   logic [N1-1:0] out1;
-	logic [N2-1:0] out2;
-	logic [N3-1:0] out3;
 	
-	
-	// Instanciamos el restador
-	restador #(
-	  .N(N1)
-	) uut_2_bits (
-	  .clk(clk),
-	  .reset(reset),
-	  .decrement_btn(enable),
-	  .init_value({N1{1'b1}}),
-	  .out(out1)
+	// Instanciamos el módulo con distintos tamaños de N
+	restador #(2) uut_2b (
+	 .reset(reset),
+	 .decrement_btn(decrement_btn),
+	 .init_value(init_value_2b),
+	 .out(out_2b)
+	);
+
+	restador #(4) uut_4b (
+	 .reset(reset),
+	 .decrement_btn(decrement_btn),
+	 .init_value(init_value_4b),
+	 .out(out_4b)
+	);
+
+	restador #(6) uut_6b (
+	 .reset(reset),
+	 .decrement_btn(decrement_btn),
+	 .init_value(init_value_6b),
+	 .out(out_6b)
 	);
 	
-	restador #(
-	  .N(N2)
-	) uut_4_bits (
-	  .clk(clk),
-	  .reset(reset),
-	  .decrement_btn(enable),
-	  .init_value({N2{1'b1}}),
-	  .out(out2)
-	);
-	
-	restador #(
-	  .N(N3)
-	) uut_6_bits (
-	  .clk(clk),
-	  .reset(reset),
-	  .decrement_btn(enable),
-	  .init_value({N3{1'b1}}),
-	  .out(out3)
-	);
-	
-	// Generar el reloj
-   always #5 clk = ~clk;  // Ciclo de reloj de 10 unidades de tiempo
 	
 	initial begin
 		// Inicialización
-		clk = 0;
-		reset = 0;
-		enable = 0;
+		init_value_2b = 2'b11;  // 3
+		init_value_4b = 4'b1010; // 10
+		init_value_6b = 6'b111100; // 60
+		
+		reset = 0; #5; reset = 1;
+		decrement_btn = 1;
 
-		// Prueba para reset asíncrono
-		#10 reset = 1;  // Activamos el reset asincrónico
-		#10 enable = 1;    // Habilitamos el restador
-		#10 enable = 0;    // Deshabilitamos el restador
-		#10 reset = 0;   // Activamos el reset asincrónico
-		#10 reset = 1;   // Desactivamos el reset asincrónico
-		#10 enable = 1;    // Habilitamos el restador
+		// Mostrar valores iniciales
+		#5;
+		$display("Inicio: out_2b = %d, out_4b = %d, out_6b = %d", out_2b, out_4b, out_6b);
 
-		// Fin de la simulación
-		#50; $finish;
-	end
 
-   initial begin
-		// Chequeo de resultados
-		$monitor("Time: %0t | out 1 (2 bits): %b | out 2 (4 bits): %b | out 3 (6 bits): %b", $time, out1, out2, out3);
+		// Prueba de decremento
+		#10 decrement_btn = 0; #10 decrement_btn = 1;
+		#10 decrement_btn = 0; #10 decrement_btn = 1;
+		#10 decrement_btn = 0; #10 decrement_btn = 1;
+
+		// Mostrar después de varios decrementos
+		#10;
+		$display("Después de decrementos: out_2b = %d, out_4b = %d, out_6b = %d", out_2b, out_4b, out_6b);
+
+		// Prueba de reset
+		#10 reset = 0; #10 reset = 1;
+
+		// Mostrar después del reset
+		#10;
+		$display("Después de reset: out_2b = %d, out_4b = %d, out_6b = %d", out_2b, out_4b, out_6b);
+
+		// Terminar simulación
+		#10 $finish;
 	end
 	
 endmodule

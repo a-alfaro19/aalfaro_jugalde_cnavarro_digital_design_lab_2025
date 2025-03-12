@@ -9,81 +9,133 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/simulation/modelsim
-vrestador
+vbin2bcd
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1741763463
+Z2 !s110 1741803073
 !i10b 1
-!s100 74HK8>Q368kTiBWHWZBnc1
+!s100 G3>^XYSO0mUaTKPimdokS2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I043;O8mdFANJgQeReJ6jl0
+IoFDZm4JdVTzm=i2`=MI1a0
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1741763238
-8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv
-FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv
-!i122 0
-L0 1 17
-Z5 OV;L;2020.1;71
+w1741795935
+8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv
+FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv
+!i122 3
+Z5 L0 1 17
+Z6 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1741763463.000000
+Z7 !s108 1741803073.000000
+!s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/bin2bcd.sv|
+!i113 1
+Z8 o-sv -work work
+Z9 !s92 -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3
+Z10 tCvgOpt 0
+vrestador
+R1
+R2
+!i10b 1
+!s100 8HaDzCZiP6g<1RQ6Lh0W10
+R3
+Ib^9EN6:i``Lg7P;8DEdzJ1
+R4
+S1
+R0
+w1741802072
+8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv
+FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv
+!i122 0
+R5
+R6
+r1
+!s85 0
+31
+R7
 !s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador.sv|
 !i113 1
-Z7 o-sv -work work
-Z8 !s92 -sv -work work +incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3
-Z9 tCvgOpt 0
+R8
+R9
+R10
 vrestador_fpga
 R1
 R2
 !i10b 1
-!s100 FP@[Xm5QBU6FIbL9Jz[Lo0
+!s100 cJ^>EXYTg_K^]O@NVMc<:3
 R3
-IiSSUOE<h@DGBSY0AoThLf1
+I8[lAS^oleLC>Ul8S]`dZX3
 R4
 S1
 R0
-w1741760049
+w1741802231
 8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv
 FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv
 !i122 1
-L0 1 44
-R5
+L0 1 40
+R6
 r1
 !s85 0
 31
-R6
+R7
 !s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_fpga.sv|
 !i113 1
-R7
 R8
 R9
+R10
 vrestador_tb
 R1
 R2
 !i10b 1
-!s100 PZGGkojan3zLDea4=;eAE3
+!s100 0Hz7]:YgR0E<J;R56Sj5N1
 R3
-I^]1VVWBeW@>KaX0C0E6fN1
+IR1WPdW6JeNQOn<La@Za8^3
 R4
 S1
 R0
-w1741763434
+w1741803026
 8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv
 FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv
-!i122 2
-L0 3 76
-R5
+!i122 4
+L0 3 69
+R6
 r1
 !s85 0
 31
-R6
+R7
 !s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/restador_tb.sv|
 !i113 1
-R7
 R8
 R9
+R10
+vseven_segment_decoder
+R1
+R2
+!i10b 1
+!s100 2X`foM6GN8K69dOc0U99C0
+R3
+IY[bQBP8][H<Hj@iX6l1OM0
+R4
+S1
+R0
+w1741799651
+8C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv
+FC:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv
+!i122 2
+L0 1 52
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3|C:/Users/andre/Documents/Github/aalfaro_jugalde_cnavarro_digital_design_lab_2025/Problema3/seven_segment_decode.sv|
+!i113 1
+R8
+R9
+R10

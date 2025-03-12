@@ -4,31 +4,59 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "display_segments[0]",
+					"name" : "segA[0]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[1]",
+					"name" : "segA[1]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[2]",
+					"name" : "segA[2]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[3]",
+					"name" : "segA[3]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[4]",
+					"name" : "segA[4]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[5]",
+					"name" : "segA[5]",
 					"strict" : false
 				},
 				{
-					"name" : "display_segments[6]",
+					"name" : "segA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segB[6]",
 					"strict" : false
 				},
 				{
@@ -40,7 +68,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "initial_btn2",
+					"name" : "decrement_btn",
 					"strict" : false
 				},
 				{
@@ -48,11 +76,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "decrement_btn",
+					"name" : "initial_btn2",
 					"strict" : false
 				}
 			]
