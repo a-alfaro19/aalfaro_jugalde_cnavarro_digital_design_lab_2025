@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Archivos y carpetas de resultados
 output_files/
 simulation/
@@ -29,3 +30,5 @@ db/
 .vscode/
 .idea/
 .settings/
+=======
+>>>>>>> bde1478042ad4e92b648eab050b2c91839ca0f36
