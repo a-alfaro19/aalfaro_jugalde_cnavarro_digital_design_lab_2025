@@ -42,6 +42,7 @@ module multiplicador
                 .Cin(1'b0),
                 .Sum(Pp[i][N+i-1:0]),
                 .Cout(Pp[i][N+i])
+					 
             );
         end
     endgenerate
