@@ -1,32 +1,34 @@
 // ---------------------------------------------------
-// Subtractor (N bits) using Two's Complement
-// - Utiliza el módulo adder para realizar la resta A - B
+// Ripple-Carry Subtractor (N bits)
+// - Encadena N full subtractors para restar dos números binarios
 // ---------------------------------------------------
 
 module subtractor #(
-    parameter N = 4 // Número de bits (configurable)
+	parameter N = 4 // Número de bits (parámetro configurable)
 ) (
-    input logic [N-1:0] a, b,  // Entradas: A y B
-    output logic [N-1:0] diff,  // Salida: Diferencia (A - B)
-    output logic borrow        // Señal de borrow (1 si A < B)
+	input logic [N-1:0] a, b,    // Entradas: Minuendo y sustraendo de N bits
+	input logic bin,             // Borrow de entrada
+	output logic [N-1:0] diff,   // Salida de la resta
+	output logic bout            // Borrow de salida
 );
 
-    logic [N-1:0] b_comp;    // Complemento a uno de B
-    logic cout_adder;         // Carry out del adder
+	logic [N:0] borrow;         // Vector de borrow interno
+	assign borrow[0] = bin;     // Primer borrow es la entrada
 
-    // Invertir los bits de B para obtener el complemento a uno
-    assign b_comp = ~b;
-
-    // Instanciar el sumador para calcular A + (~B + 1)
-    adder #(N) adder_inst (
-        .a(a),
-        .b(b_comp),
-        .cin(1'b1),       // Sumar 1 para complemento a dos
-        .sum(diff),
-        .cout(cout_adder)
-    );
-
-    // El borrow es el inverso del carry out del sumador
-    assign borrow = ~cout_adder;
-
+	// Generación de N Full Subtractors con un bucle 'generate'
+	genvar i;
+	generate
+		for (i = 0; i < N; i++) begin : subtractor_stage
+			full_subtractor FS (
+				.a(a[i]),
+				.b(b[i]),
+				.bin(borrow[i]),
+				.diff(diff[i]),
+				.bout(borrow[i+1])
+			);
+		end
+	endgenerate
+	
+	assign bout = borrow[N]; // Borrow final
+	
 endmodule
