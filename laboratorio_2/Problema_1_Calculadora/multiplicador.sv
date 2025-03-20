@@ -34,14 +34,14 @@ module multiplicador
             
             // Suma de los productos parciales con un sumador de bits variable
 				
-            add_b#(N+i) adder_b(
+            adder#(N+i) adder_b(
 				
                 .a(Pp[i-1][N+i-1:0]),
 					 // Nuevo producto parcial
                 .b({ x & {N{y[i]}} , {i{1'b0}} }), 
-                .Cin(1'b0),
-                .Sum(Pp[i][N+i-1:0]),
-                .Cout(Pp[i][N+i])
+                .cin(1'b0),
+                .sum(Pp[i][N+i-1:0]),
+                .cout(Pp[i][N+i])
 					 
             );
         end
