@@ -65,4 +65,11 @@ set_global_assignment -name EDA_TEST_BENCH_NAME adder_tb -section_id eda_simulat
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id adder_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME adder_tb -section_id adder_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE adder_tb.sv -section_id adder_tb
+set_global_assignment -name SYSTEMVERILOG_FILE division.sv
+set_global_assignment -name SYSTEMVERILOG_FILE modulo.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_and.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_or.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_xor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_shift_left.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_shift_right.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
