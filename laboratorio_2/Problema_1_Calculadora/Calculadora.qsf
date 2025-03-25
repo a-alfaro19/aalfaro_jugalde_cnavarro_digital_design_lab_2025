@@ -70,6 +70,13 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE adder_tb.sv -section_id adder_tb
+set_global_assignment -name SYSTEMVERILOG_FILE division.sv
+set_global_assignment -name SYSTEMVERILOG_FILE modulo.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_and.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_or.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_xor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_shift_left.sv
+set_global_assignment -name SYSTEMVERILOG_FILE log_shift_right.sv
 set_global_assignment -name EDA_TEST_BENCH_FILE subtractor_tb.sv -section_id subtractor_tb
 set_global_assignment -name SYSTEMVERILOG_FILE full_subtractor.sv
 set_global_assignment -name SYSTEMVERILOG_FILE half_subtractor.sv
