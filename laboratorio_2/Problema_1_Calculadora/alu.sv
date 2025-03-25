@@ -3,7 +3,7 @@ module alu(
     input [3:0] b,
     input [3:0] op,
     output reg [7:0] result,
-    output reg [3:0] flags  // [carry, borrow, overflow, error]
+    output reg [3:0] flags  // [carry, negativo, overflow, cero]
 );
 
     // Conexiones para módulos
@@ -82,31 +82,50 @@ module alu(
         flags = 4'b0;
         
         case(op)
-            4'b0000: begin  // Suma
+            4'b1111: begin  // Suma
+				    if(adder_sum == 0) flags[0] = 1;
                 result[3:0] = adder_sum;
                 flags[3] = adder_cout;
             end
-            4'b0001: begin  // Resta
+            4'b1110: begin  // Resta
+				    if(sub_diff == 0) flags[0] = 1;
                 result[3:0] = sub_diff;
                 flags[2] = sub_bout;
             end
-            4'b0010: begin  // Multiplicación
+            4'b1101: begin  // Multiplicación
                 result = {mult_Of, mult_R};
                 flags[1] = |mult_Of;
+					 if(mult_R == 0) flags[0] = 1;
             end
-            4'b0011: begin  // División
+            4'b1100: begin  // División
                 if(b == 0) flags[0] = 1;
                 else result[3:0] = div_out;
             end
-            4'b0100: begin  // Módulo
-                if(b == 0) flags[0] = 1;
+            4'b1011: begin  // Módulo
+                if(mod_out == 0) flags[0] = 1;
                 else result[3:0] = mod_out;
             end
-            4'b0101: result[3:0] = and_out;  // AND
-            4'b0110: result[3:0] = or_out;   // OR
-            4'b0111: result[3:0] = xor_out;  // XOR
-            4'b1000: result[3:0] = shiftL_out; // Shift Left
-            4'b1001: result[3:0] = shiftR_out; // Shift Right
+				
+            4'b1010: begin
+					if(and_out == 0) flags[0] = 1;
+					result[3:0] = and_out;  // AND
+				end
+            4'b1001: begin
+					if(or_out == 0) flags[0] = 1;
+					result[3:0] = or_out;   // OR
+				end
+            4'b1000: begin
+					if(xor_out == 0) flags[0] = 1;
+					result[3:0] = xor_out;  // XOR
+				end
+            4'b0111: begin
+					if(shiftL_out == 0) flags[0] = 1;
+					result[3:0] = shiftL_out; // Shift Left
+				end
+            4'b0110: begin
+					if(shiftR_out == 0) flags[0] = 1;
+					result[3:0] = shiftR_out; // Shift Right
+				end
         endcase
     end
 endmodule
