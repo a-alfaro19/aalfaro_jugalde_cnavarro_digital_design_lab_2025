@@ -9,7 +9,7 @@ module subtractor #(
 	input logic [N-1:0] a, b,    // Entradas: Minuendo y sustraendo de N bits
 	input logic bin,             // Borrow de entrada
 	output logic [N-1:0] diff,   // Salida de la resta
-	output logic bout            // Borrow de salida
+	output logic bout            // Negativo de salida
 );
 
 	logic [N:0] borrow;         // Vector de borrow interno
