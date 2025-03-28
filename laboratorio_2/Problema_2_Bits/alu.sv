@@ -1,5 +1,5 @@
 module alu #(
-    parameter N = 4  // Bits de los operandos (2,4,8,16,32)
+    parameter N = 32  // Bits de los operandos (2,4,8,16,32)
 )(
     input [N-1:0] a,
     input [N-1:0] b,

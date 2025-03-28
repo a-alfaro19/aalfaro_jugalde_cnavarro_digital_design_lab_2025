@@ -1,5 +1,5 @@
 module alu_top #(
-    parameter N = 4  // Bits de los operandos
+    parameter N = 32  // Bits de los operandos
 )(
     input clk, reset,
     input [N-1:0] a, b,
