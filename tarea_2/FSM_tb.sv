@@ -45,9 +45,9 @@ module FSM_tb;
         assert (maintenance_count == 1) else $error("Test 1: maintenance_count no incrementado");
 
         // Prueba 2: Dejar pasar el tiempo sin presionar el botón
-			repeat (201) @(posedge clk);
-			#1;
-			assert (error_flag) else $error("Test 2: error_flag no activado tras tiempo límite");
+	repeat (201) @(posedge clk);
+	#1;
+	assert (error_flag) else $error("Test 2: error_flag no activado tras tiempo límite");
 
         // Prueba 3: Reset del sistema
         #10 rst = 1;
