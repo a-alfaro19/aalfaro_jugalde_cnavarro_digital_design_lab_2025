@@ -2,7 +2,7 @@ module timer (
 	input logic clk, // Señal de Reloj
 	input logic rst, // Señal de Reset
 	input logic start, // Señal de inicio
-	ouput logic time_out // Señal de finalizado
+	output logic time_out // Señal de finalizado
 );
 
 	logic [3:0] count = 4'b0000;	// Cuenta del contador

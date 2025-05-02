@@ -5,6 +5,7 @@ module board (
 	input logic [2:0] col_to_check,
 	input logic current_player, // 0 = jugador 1, 1 = jugador 2
 	input logic place_token, 
+	input logic place_token_randomly,
 	input logic check_col,
 	input logic check_win,
 	output logic player_moved, // Indica que el jugador realizó un movimiento
@@ -27,13 +28,19 @@ module board (
 	logic [5:0] total_tokens; // Total de fichas colocadas
 	logic [6:0] cell_index; // Índice calculado para acceder a una celda
 	logic [1:0] current_mark; // Marca del jugador actual
-	logic column_has_space; // Indica si hay espacio en una columna
 	logic token_was_placed;
 	
-	// Salidas del winner_detector
+	// Variables del winner_detector
 	logic winner_detected;
 	logic [2:0] detected_winner;
 	logic [83:0] winner_cells; // 84 bits (una marca por celda ganadora)
+	
+	// Variables de column_verifier
+	logic column_has_space; // Indica si hay espacio en una columna
+	
+	// Variables del random_col_generator
+	logic [2:0] random_column;
+	logic random_column_valid;
 	
 	// Detector de Ganador
 	winner_detector detector (
@@ -44,16 +51,29 @@ module board (
 		.winner_play(winner_cells)
 	);
 	
+	// Verificador de columna
+	column_checker verificador (
+		.board_state(board_state),
+		.check_col(check_col),
+		.column(col_to_check),
+		.column_has_space(column_has_space)
+	);
+	
+	// Generador de movimiento aleatorio
+	random_col_generator generador_aleatorio (
+		.place_token_randomly(place_token_randomly),
+		.board_state(board_state),
+		.random_column(random_column),
+		.random_column_valid(random_column_valid)
+	);
+	
 	always_ff @ (posedge clk or posedge rst) begin
 		if (rst) begin
-			// Reiniciar estado
+			// Reiniciar variables internas
 			board_state <= 84'b0;
 			total_tokens <= 6'd0;
 			player_moved <= 0;
-			winner_detected <= 0;
-			detected_winner <= 3'b000;
-			column_has_space <= 1;
-			winner_cells <= 84'b0;
+			token_was_placed <= 0;
 			
 		end else begin
 			player_moved <= 0;
@@ -73,17 +93,21 @@ module board (
 						total_tokens <= total_tokens + 1; // Aumentar cantidad de fichas colocadas
 						player_moved <= 1;
 						token_was_placed = 1; 
-					end
-				end
-				
-			end else if (check_col) begin 
-				column_has_space = 0;
-				for (int row = ROWS - 1; row >= 0; row--) begin
-					cell_index = (row * COLS + col_to_check) * 2;
-					if (board_state[cell_index +: 2] == EMPTY) begin
-						column_has_space = 1;
 						break;
 					end
+				end
+			end else if (place_token_randomly && random_column_valid) begin
+				current_mark = (current_player == 0) ? PLAYER_1 : PLAYER_2;
+
+				for (int row = ROWS - 1; row >= 0; row--) begin
+				  cell_index = (row * COLS + random_column) * 2;
+				  if (board_state[cell_index +: 2] == EMPTY && !token_was_placed) begin
+						board_state[cell_index +: 2] <= current_mark;
+						total_tokens <= total_tokens + 1;
+						player_moved <= 1;
+						token_was_placed = 1;
+						break;
+				  end
 				end
 			end
 		end

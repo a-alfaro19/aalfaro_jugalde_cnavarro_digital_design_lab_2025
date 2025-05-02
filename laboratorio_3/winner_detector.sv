@@ -20,19 +20,19 @@ module winner_detector (
 	
 			for (int row = 0; row < ROWS; row++) begin
 				for (int col = 0; col < COLS; col++) begin
-					 logic [1:0] cell;
+					 logic [1:0] cell_value;
 					 int base_idx = (row * COLS + col) * 2;
-					 cell = board_state[base_idx +: 2];
+					 cell_value = board_state[base_idx +: 2];
 
-					 if (cell != EMPTY) begin
+					 if (cell_value != EMPTY) begin
 						  // Horizontal →
 						  if (col <= COLS - 4) begin
-								if (board_state[base_idx +: 2] == cell &&
-									 board_state[base_idx + 2*1 +: 2] == cell &&
-									 board_state[base_idx + 2*2 +: 2] == cell &&
-									 board_state[base_idx + 2*3 +: 2] == cell) begin
+								if (board_state[base_idx +: 2] == cell_value &&
+									 board_state[base_idx + 2*1 +: 2] == cell_value &&
+									 board_state[base_idx + 2*2 +: 2] == cell_value &&
+									 board_state[base_idx + 2*3 +: 2] == cell_value) begin
 									 theres_a_winner = 1;
-									 winner = (cell == PLAYER_1) ? 3'd1 : 3'd2;
+									 winner = (cell_value == PLAYER_1) ? 3'd1 : 3'd2;
 									 winner_play[row * COLS + col] = 1;
 									 winner_play[row * COLS + col + 1] = 1;
 									 winner_play[row * COLS + col + 2] = 1;
@@ -45,11 +45,11 @@ module winner_detector (
 								int i1 = ((row + 1) * COLS + col) * 2;
 								int i2 = ((row + 2) * COLS + col) * 2;
 								int i3 = ((row + 3) * COLS + col) * 2;
-								if (board_state[i1 +: 2] == cell &&
-									 board_state[i2 +: 2] == cell &&
-									 board_state[i3 +: 2] == cell) begin
+								if (board_state[i1 +: 2] == cell_value &&
+									 board_state[i2 +: 2] == cell_value &&
+									 board_state[i3 +: 2] == cell_value) begin
 									 theres_a_winner = 1;
-									 winner = (cell == PLAYER_1) ? 3'd1 : 3'd2;
+									 winner = (cell_value == PLAYER_1) ? 3'd1 : 3'd2;
 									 winner_play[row * COLS + col] = 1;
 									 winner_play[(row + 1) * COLS + col] = 1;
 									 winner_play[(row + 2) * COLS + col] = 1;
@@ -62,11 +62,11 @@ module winner_detector (
 								int i1 = ((row + 1) * COLS + (col + 1)) * 2;
 								int i2 = ((row + 2) * COLS + (col + 2)) * 2;
 								int i3 = ((row + 3) * COLS + (col + 3)) * 2;
-								if (board_state[i1 +: 2] == cell &&
-									 board_state[i2 +: 2] == cell &&
-									 board_state[i3 +: 2] == cell) begin
+								if (board_state[i1 +: 2] == cell_value &&
+									 board_state[i2 +: 2] == cell_value &&
+									 board_state[i3 +: 2] == cell_value) begin
 									 theres_a_winner = 1;
-									 winner = (cell == PLAYER_1) ? 3'd1 : 3'd2;
+									 winner = (cell_value == PLAYER_1) ? 3'd1 : 3'd2;
 									 winner_play[row * COLS + col] = 1;
 									 winner_play[(row + 1) * COLS + col + 1] = 1;
 									 winner_play[(row + 2) * COLS + col + 2] = 1;
@@ -79,11 +79,11 @@ module winner_detector (
 								int i1 = ((row - 1) * COLS + (col + 1)) * 2;
 								int i2 = ((row - 2) * COLS + (col + 2)) * 2;
 								int i3 = ((row - 3) * COLS + (col + 3)) * 2;
-								if (board_state[i1 +: 2] == cell &&
-									 board_state[i2 +: 2] == cell &&
-									 board_state[i3 +: 2] == cell) begin
+								if (board_state[i1 +: 2] == cell_value &&
+									 board_state[i2 +: 2] == cell_value &&
+									 board_state[i3 +: 2] == cell_value) begin
 									 theres_a_winner = 1;
-									 winner = (cell == PLAYER_1) ? 3'd1 : 3'd2;
+									 winner = (cell_value == PLAYER_1) ? 3'd1 : 3'd2;
 									 winner_play[row * COLS + col] = 1;
 									 winner_play[(row - 1) * COLS + col + 1] = 1;
 									 winner_play[(row - 2) * COLS + col + 2] = 1;
