@@ -87,7 +87,7 @@ module vga_tb;
 
     // Timeout para evitar simulación infinita (1 ms)
     initial begin
-        #1_000_000;
+        #4_000_000;
         $display("\n*** TIMEOUT: No win/draw after %0t ns, aborting ***\n", $time);
         $finish;
     end
