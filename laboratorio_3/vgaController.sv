@@ -1,41 +1,41 @@
-// vgaController.sv – Generación de sincronías VGA 640×480@60Hz
-module vgaController(
-    input  logic        vgaclk,
-    input  logic        reset_n,
-    output logic        hsync,
-    output logic        vsync,
-    output logic        blank_b,
-    output logic        sync_b,
-    output logic [9:0]  x,
-    output logic [9:0]  y
+// vgaController.sv
+// -----------------
+// Temporización VGA 640×480 @60 Hz
+module vgaController (
+    input  logic        vgaclk,    // Reloj de píxel (~25 MHz)
+    input  logic        reset_n,   // Reset activo-bajo
+    output logic        hsync,     // HSYNC (activo-bajo)
+    output logic        vsync,     // VSYNC (activo-bajo)
+    output logic        blank_b,   // 1 = zona visible
+    output logic        sync_b,    // HSYNC & VSYNC compuesto
+    output logic [9:0]  x,         // 0…799
+    output logic [9:0]  y          // 0…524
 );
-    // Temporizaciones estándar VGA 640×480
-    localparam int WIDTH  = 640,  HFP   = 16, HSYNC = 96, HBP = 48;
-    localparam int HEIGHT = 480,  VFP   = 10, VSYNC = 2,  VBP = 33;
-    localparam int HMAX   = WIDTH + HFP + HSYNC + HBP; // 800
-    localparam int VMAX   = HEIGHT + VFP + VSYNC + VBP; // 525
+    // Parámetros de temporización
+    localparam int H_ACTIVE = 640, H_FP = 16, H_PW = 96, H_BP = 48;
+    localparam int V_ACTIVE = 480, V_FP = 10, V_PW = 2,  V_BP = 33;
+    localparam int H_TOTAL  = H_ACTIVE + H_FP + H_PW + H_BP; // 800
+    localparam int V_TOTAL  = V_ACTIVE + V_FP + V_PW + V_BP; // 525
 
-    // Contadores de posición de haz
+    // Contador de posición
     always_ff @(posedge vgaclk or negedge reset_n) begin
         if (!reset_n) begin
             x <= 0; y <= 0;
         end else begin
-            if (x == HMAX - 1) begin
+            if (x == H_TOTAL - 1) begin
                 x <= 0;
-                y <= (y == VMAX - 1) ? 0 : y + 1;
+                y <= (y == V_TOTAL - 1) ? 0 : y + 1;
             end else begin
                 x <= x + 1;
             end
         end
     end
 
-    // Generación de hsync/vsync y blanking
+    // Señales de sincronía y blanking
     always_comb begin
-        // HSYNC activo-bajo durante HSYNC
-        hsync   = !((x >= WIDTH + HFP) && (x < WIDTH + HFP + HSYNC));
-        // VSYNC activo-bajo durante VSYNC
-        vsync   = !((y >= HEIGHT + VFP) && (y < HEIGHT + VFP + VSYNC));
-        blank_b = (x < WIDTH) && (y < HEIGHT);     // zona visible
-        sync_b  = hsync & vsync;                   // sync compuesto
+        hsync   = ~((x >= H_ACTIVE + H_FP) && (x < H_ACTIVE + H_FP + H_PW));
+        vsync   = ~((y >= V_ACTIVE + V_FP) && (y < V_ACTIVE + V_FP + V_PW));
+        blank_b = (x < H_ACTIVE) && (y < V_ACTIVE);
+        sync_b  = hsync & vsync;
     end
 endmodule
