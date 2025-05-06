@@ -1,15 +1,15 @@
-// pll.sv
-// -----------------
-// Divide 50 MHz → ~25 MHz con reset activo-bajo
-module pll (
-    input  logic clk_in,    // Reloj principal 50 MHz
-    input  logic reset_n,   // Reset activo-bajo
-    output logic clk_out    // Reloj de píxel ~25 MHz
+module pll(
+	input logic inclk0,
+	output logic c0
 );
-    always_ff @(posedge clk_in or negedge reset_n) begin
-        if (!reset_n)
-            clk_out <= 1'b0;
-        else
-            clk_out <= ~clk_out;
-    end
+	logic toggle;
+	initial begin
+		toggle = 0;
+	end
+	
+	always @(posedge inclk0) begin
+		toggle <= ~toggle;
+	end
+	
+	assign c0 = toggle;
 endmodule
