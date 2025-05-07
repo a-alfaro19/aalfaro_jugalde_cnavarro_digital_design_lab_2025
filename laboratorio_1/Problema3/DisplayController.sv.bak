@@ -1,0 +1,49 @@
+module DisplayController (
+    input  logic        clk,
+    input  logic        rst,
+    input  logic [3:0]  segundos_unidades,
+    input  logic [3:0]  segundos_decenas,
+    output logic [6:0]  display,
+    output logic [1:0]  anode
+);
+
+    logic [3:0] current_digit;
+    logic [16:0] counter;
+
+    always_ff @(posedge clk or posedge rst) begin
+        if (rst) begin
+            counter <= 0;
+        end else begin
+            counter <= counter + 1;
+        end
+    end
+
+    // Selección de display y dígito a mostrar
+    always_comb begin
+        if (counter[16]) begin
+            current_digit = segundos_unidades;
+            anode = 2'b10;  // Activar el display de las unidades
+        end else begin
+            current_digit = segundos_decenas;
+            anode = 2'b01;  // Activar el display de las decenas
+        end
+    end
+
+    // Decodificación a 7 segmentos (ánodo común)
+    always_comb begin
+        case (current_digit)
+            4'd0: display = 7'b1000000;
+            4'd1: display = 7'b1111001;
+            4'd2: display = 7'b0100100;
+            4'd3: display = 7'b0110000;
+            4'd4: display = 7'b0011001;
+            4'd5: display = 7'b0010010;
+            4'd6: display = 7'b0000010;
+            4'd7: display = 7'b1111000;
+            4'd8: display = 7'b0000000;
+            4'd9: display = 7'b0010000;
+            default: display = 7'b1111111; // Apagado
+        endcase
+    end
+
+endmodule
