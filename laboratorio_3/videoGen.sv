@@ -2,75 +2,59 @@ module videoGen (
     input  logic        vgaclk,
     input  logic [9:0]  x,
     input  logic [9:0]  y,
-    input  logic [6:0]  sw_rising_edge, // se recibe el flanco detectado
+    input  logic [2:0]  board [5:0][6:0],  // Tablero recibido (6 filas x 7 columnas)
     output logic [7:0]  red,
     output logic [7:0]  green,
     output logic [7:0]  blue
 );
 
-    localparam CELL_W = 91;
-    localparam CELL_H = 80;
-    localparam NUM_COLS = 7;
-    localparam NUM_ROWS = 6;
+    localparam CELL_W = 91;  // Ancho de cada celda
+    localparam CELL_H = 80;  // Alto de cada celda
+    localparam NUM_COLS = 7; // Número de columnas en el tablero
+    localparam NUM_ROWS = 6; // Número de filas en el tablero
 
-    logic [2:0] board[NUM_ROWS-1:0][NUM_COLS-1:0];
-    logic [2:0] col;
-    logic [2:0] row;
-    logic [6:0] cx;
-    logic [6:0] cy;
-    logic [2:0] current_player;
+    logic [2:0] col;  // Columna correspondiente al pixel
+    logic [2:0] row;  // Fila correspondiente al pixel
+    logic [6:0] cx;   // Coordenada horizontal dentro de la celda
+    logic [6:0] cy;   // Coordenada vertical dentro de la celda
 
-    // Variables para sincronizar el flanco con vgaclk
-    logic [6:0] sw_sync_1, sw_sync_2;
-    logic [6:0] sw_edge_vgaclk;
-
-    // Sincronizador de flanco de subida
-    always_ff @(posedge vgaclk) begin
-        sw_sync_1 <= sw_rising_edge;
-        sw_sync_2 <= sw_sync_1;
-        sw_edge_vgaclk <= sw_sync_1 & ~sw_sync_2;  // Flanco de subida detectado
-    end
-
-    // Inicialización del tablero
-    initial begin
-        for (int i = 0; i < NUM_ROWS; i++)
-            for (int j = 0; j < NUM_COLS; j++)
-                board[i][j] = 0;
-        current_player = 1;
-    end
-
-    // Colocación de ficha solo en el primer flanco de subida
-    always_ff @(posedge vgaclk) begin
-        for (int i = 0; i < NUM_COLS; i++) begin
-            if (sw_edge_vgaclk[i]) begin // Verificamos si hubo un flanco de subida
-                for (int r = NUM_ROWS-1; r >= 0; r--) begin
-                    if (board[r][i] == 0) begin
-                        board[r][i] = current_player;
-                        current_player = (current_player == 1) ? 2 : 1; // Cambiar de jugador
-                        break;
-                    end
-                end
-            end
-        end
-    end
-
-    // Generación de la imagen VGA
     always_comb begin
-        red   = 8'h00;
+        red   = 8'h00;    // Inicializamos los valores a negro
         green = 8'h00;
         blue  = 8'h00;
 
-        col = x / CELL_W;
-        row = y / CELL_H;
-        cx = x % CELL_W;
-        cy = y % CELL_H;
+        col = x / CELL_W;   // Calculamos la columna en la que estamos
+        row = y / CELL_H;   // Calculamos la fila en la que estamos
+        cx = x % CELL_W;    // Coordenada horizontal dentro de la celda
+        cy = y % CELL_H;    // Coordenada vertical dentro de la celda
 
+        // Verificamos si las coordenadas caen dentro del tablero
         if (col < NUM_COLS && row < NUM_ROWS) begin
-            case (board[row][col])
-                1: begin red = 8'hFF; green = 8'h00; blue = 8'h00; end
-                2: begin red = 8'hFF; green = 8'hFF; blue = 8'h00; end
-                default: begin red = 8'h00; green = 8'h00; blue = 8'h80; end
-            endcase
+            // Dibujamos un borde alrededor del tablero (opcional)
+            if (cx < 5 || cy < 5 || cx > (CELL_W - 6) || cy > (CELL_H - 6)) begin
+                red   = 8'h00;
+                green = 8'h00;
+                blue  = 8'hFF; // Borde azul
+            end else begin
+                // Dependiendo del valor en el tablero, cambiamos el color
+                case (board[row][col])
+                    1: begin
+                        red   = 8'hFF;  // Rojo
+                        green = 8'h00;
+                        blue  = 8'h00;
+                    end
+                    2: begin
+                        red   = 8'hFF;  // Amarillo
+                        green = 8'hFF;
+                        blue  = 8'h00;
+                    end
+                    default: begin
+                        red   = 8'h00;  // Azul para fondo
+                        green = 8'h00;
+                        blue  = 8'h80;
+                    end
+                endcase
+            end
         end
     end
 

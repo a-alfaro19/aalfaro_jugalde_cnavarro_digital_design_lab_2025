@@ -1,14 +1,24 @@
-module rising_edge_detector (
-    input  logic        clk,
-    input  logic [6:0]  signal_in,
-    output logic [6:0]  rising_edge
+module rising_edge_detector #(
+parameter N = 7
+)(
+input logic clk,
+input logic reset,
+input logic [N-1:0] signal_in,
+output logic [N-1:0] rising_edge
 );
 
-    logic [6:0] signal_prev;
+logic [N-1:0] sync0, sync1;
 
-    always_ff @(posedge clk) begin
-        signal_prev <= signal_in;
-        rising_edge <= signal_in & ~signal_prev;
-    end
+always_ff @(posedge clk or posedge reset) begin
+	if (reset) begin
+		sync0 <= {N{1'b0}};
+		sync1 <= {N{1'b0}};
+	end else begin
+		sync0 <= signal_in;
+		sync1 <= sync0;
+	end
+end
+
+assign rising_edge = sync0 & ~sync1;
 
 endmodule

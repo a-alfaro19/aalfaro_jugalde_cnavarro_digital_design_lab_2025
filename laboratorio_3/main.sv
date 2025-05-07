@@ -16,6 +16,7 @@ module main (
     logic pll_locked;
 
     logic [6:0] sw_rising_edge;
+    logic [2:0] board [5:0][6:0]; // 6 filas, 7 columnas (para Conecta 4)
 
     // PLL para generar vgaclk
     clkpll pll_inst (
@@ -25,33 +26,42 @@ module main (
         .locked   (pll_locked)
     );
 
-    // Detector de flanco de subida (usa clk lento, no vgaclk)
+    // Detector de flanco de subida
     rising_edge_detector redet_inst (
-        .clk        (vgaclk),
-        .signal_in  (sw),
-        .rising_edge(sw_rising_edge)
+        .clk         (vgaclk),
+        .reset       (rst),
+        .signal_in   (sw),
+        .rising_edge (sw_rising_edge)
     );
 
-    // VGA Controller
+    // Controlador VGA
     vgaController vga_inst (
-        .vgaclk (vgaclk),
-        .hsync  (hsync),
-        .vsync  (vsync),
-        .sync_b (sync_b),
-        .blank_b(blank_b),
-        .x      (x),
-        .y      (y)
+        .vgaclk  (vgaclk),
+        .hsync   (hsync),
+        .vsync   (vsync),
+        .sync_b  (sync_b),
+        .blank_b (blank_b),
+        .x       (x),
+        .y       (y)
     );
 
-    // Video Generator
+    // Lógica del juego: coloca fichas y actualiza el tablero
+    gameLogic game_inst (
+        .clk            (vgaclk),
+        .rst            (rst),
+        .sw_rising_edge (sw_rising_edge),
+        .board          (board)
+    );
+
+    // Generador de video: solo dibuja en pantalla
     videoGen video_inst (
-        .vgaclk         (vgaclk),
-        .x              (x),
-        .y              (y),
-        .sw_rising_edge (sw_rising_edge),  // Se pasa la señal procesada
-        .red            (red),
-        .green          (green),
-        .blue           (blue)
+        .vgaclk (vgaclk),
+        .x      (x),
+        .y      (y),
+        .board  (board),
+        .red    (red),
+        .green  (green),
+        .blue   (blue)
     );
 
 endmodule
