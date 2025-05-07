@@ -16,7 +16,11 @@ module main (
     logic pll_locked;
 
     logic [6:0] sw_rising_edge;
+    logic [6:0] sw_falling_edge;
     logic [2:0] board [5:0][6:0]; // 6 filas, 7 columnas (para Conecta 4)
+    logic [1:0] jugador;           // Jugador actual
+    logic inserted;                // Señal de ficha insertada
+    logic juego_terminado;         // Señal para indicar si el juego terminó
 
     // PLL para generar vgaclk
     clkpll pll_inst (
@@ -33,6 +37,14 @@ module main (
         .signal_in   (sw),
         .rising_edge (sw_rising_edge)
     );
+    
+    // Detector de flanco de bajada (por si quieres usarlo después)
+    falling_edge_detector faldet_inst (
+        .clk          (vgaclk),
+        .reset        (rst),
+        .signal_in    (sw),
+        .falling_edge (sw_falling_edge)
+    );
 
     // Controlador VGA
     vgaController vga_inst (
@@ -45,12 +57,24 @@ module main (
         .y       (y)
     );
 
+    // Alternancia de jugadores
+    always_ff @(posedge vgaclk or posedge rst) begin
+        if (rst) begin
+            jugador <= 2'b01; // Inicia con el jugador 1 (rojo)
+        end else if (inserted) begin
+            jugador <= (jugador == 2'b01) ? 2'b10 : 2'b01;
+        end
+    end
+
     // Lógica del juego: coloca fichas y actualiza el tablero
     gameLogic game_inst (
         .clk            (vgaclk),
         .rst            (rst),
-        .sw_rising_edge (sw_rising_edge),
-        .board          (board)
+        .pulses         (sw_rising_edge),  // Conectamos los flancos de subida
+        .jugador        (jugador),         // Jugador actual
+        .juego_terminado(juego_terminado), // Si el juego ha terminado
+        .inserted       (inserted),        // Señal de ficha insertada
+        .board          (board)            // Tablero del juego
     );
 
     // Generador de video: solo dibuja en pantalla

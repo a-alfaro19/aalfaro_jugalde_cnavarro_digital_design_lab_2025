@@ -62,25 +62,9 @@ set_location_assignment PIN_AK19 -to hsync
 set_location_assignment PIN_AF14 -to clk
 set_location_assignment PIN_AK18 -to vsync
 set_location_assignment PIN_AK21 -to vgaclk
-set_global_assignment -name SYSTEMVERILOG_FILE main.sv
-set_global_assignment -name SYSTEMVERILOG_FILE FSM_Game.sv
-set_global_assignment -name SYSTEMVERILOG_FILE timer.sv
-set_global_assignment -name SYSTEMVERILOG_FILE board.sv
-set_global_assignment -name SYSTEMVERILOG_FILE winner_detector.sv
-set_global_assignment -name SYSTEMVERILOG_FILE column_checker.sv
-set_global_assignment -name SYSTEMVERILOG_FILE random_col_generator.sv
-set_global_assignment -name SYSTEMVERILOG_FILE pll.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vgaController.sv
-set_global_assignment -name SYSTEMVERILOG_FILE videoGen.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vga_tb.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vga_test_pattern.sv
-set_global_assignment -name SYSTEMVERILOG_FILE output_files/main.sv
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name QIP_FILE clkpll.qip
-set_global_assignment -name SIP_FILE clkpll.sip
 set_location_assignment PIN_AK29 -to red[0]
 set_location_assignment PIN_AK28 -to red[1]
 set_location_assignment PIN_AK27 -to red[2]
@@ -115,6 +99,24 @@ set_location_assignment PIN_AC30 -to sw[3]
 set_location_assignment PIN_W25 -to sw[4]
 set_location_assignment PIN_V25 -to sw[5]
 set_location_assignment PIN_AC28 -to sw[6]
+set_global_assignment -name SOURCE_FILE clkpll.cmp
+set_global_assignment -name SYSTEMVERILOG_FILE main.sv
+set_global_assignment -name SYSTEMVERILOG_FILE FSM_Game.sv
+set_global_assignment -name SYSTEMVERILOG_FILE timer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE board.sv
+set_global_assignment -name SYSTEMVERILOG_FILE winner_detector.sv
+set_global_assignment -name SYSTEMVERILOG_FILE column_checker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE random_col_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE pll.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vgaController.sv
+set_global_assignment -name SYSTEMVERILOG_FILE videoGen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga_test_pattern.sv
+set_global_assignment -name QIP_FILE clkpll.qip
+set_global_assignment -name SIP_FILE clkpll.sip
 set_global_assignment -name SYSTEMVERILOG_FILE rising_edge_detector.sv
-set_global_assignment -name SYSTEMVERILOG_FILE output_files/gameLogic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE gameLogic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE falling_edge_detector.sv
+set_global_assignment -name SYSTEMVERILOG_FILE insertar_ficha.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,53 +1,98 @@
 module gameLogic (
-    input  logic        clk,               // Reloj VGA
-    input  logic        rst,               // Reset
-    input  logic [6:0]  sw_rising_edge,    // Flanco de subida de los interruptores
-    input  logic [6:0]  sw_falling_edge,   // Flanco de bajada de los interruptores (detectado en el módulo principal)
-    output logic [2:0]  board [5:0][6:0]   // Tablero de 6x7
+    input  logic        clk,
+    input  logic        rst,
+    input  logic [6:0]  pulses,            // Flancos de subida de los switches
+    input  logic [1:0]  jugador,           // Jugador actual (01 para J1, 10 para J2)
+    input  logic        juego_terminado,   // Si el juego ha terminado, se bloquea
+    output logic        inserted,          // Señal que indica si se insertó una ficha
+    output logic [2:0]  board [5:0][6:0]   // Tablero del juego
 );
 
     parameter ROWS = 6;
     parameter COLS = 7;
 
-    logic [6:0] processed; // Evita múltiples fichas por mantener el switch presionado
-    logic [6:0] sw_pulse;  // Pulsos de un solo ciclo para cada columna
+    typedef enum logic [1:0] {IDLE, INSERTANDO, COOLDOWN} state_t;
+    state_t state = IDLE;
 
-    // Generar un pulso de un solo ciclo para cada flanco de subida
+    logic [6:0] pulse_buffer = 0;
+    logic [2:0] col_insertar = 0;
+    logic [23:0] cooldown_counter = 0;
+    logic pulse_consumido = 0;
+    logic inserted_flag = 0;
+
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-            sw_pulse <= 7'b0;
-        end else begin
-            sw_pulse <= sw_rising_edge & ~sw_pulse; // Genera un pulso de un ciclo cuando hay un flanco de subida
-        end
-    end
+            state <= IDLE;
+            pulse_buffer <= 0;
+            cooldown_counter <= 0;
+            pulse_consumido <= 0;
+            inserted <= 0;
+            inserted_flag <= 0;
 
-    // Lógica principal para insertar las fichas en el tablero
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst) begin
-            processed <= 7'b0;
-            for (int i = 0; i < ROWS; i++) begin
-                for (int j = 0; j < COLS; j++) begin
+            for (int i = 0; i < ROWS; i++)
+                for (int j = 0; j < COLS; j++)
                     board[i][j] <= 3'b000;
-                end
-            end
+
         end else begin
-            for (int col = 0; col < COLS; col++) begin
-                // Solo procesar cuando haya un pulso y no se haya procesado esta columna aún
-                if (sw_pulse[col] && !processed[col]) begin
-                    // Coloca la ficha solo una vez
-                    for (int row = ROWS - 1; row >= 0; row--) begin
-                        if (board[row][col] == 3'b000) begin
-                            board[row][col] <= 3'b001; // Coloca una ficha (por ejemplo, ficha roja)
-                            break;
+            inserted <= inserted_flag;
+            inserted_flag <= 0;
+
+            // Si ya hay un ganador, no permitir más inserciones
+            if (juego_terminado) begin
+                state <= IDLE;
+                pulse_buffer <= 0;
+                inserted_flag <= 0;
+                cooldown_counter <= 0;
+                pulse_consumido <= 0;
+            end else begin
+                if (state == IDLE)
+                    pulse_buffer <= pulse_buffer | pulses;
+
+                case (state)
+                    IDLE: begin
+                        pulse_consumido <= 0;
+                        // Detectar qué columna tiene el pulso
+                        for (int col = 0; col < 7; col++) begin
+                            if (pulse_buffer[col]) begin
+                                col_insertar <= col;
+                                state <= INSERTANDO;
+                                break;
+                            end
                         end
                     end
-                    processed[col] <= 1; // Marca la columna como procesada
-                end
 
-                // Libera el flag cuando el interruptor se ha soltado
-                if (sw_falling_edge[col]) begin
-                    processed[col] <= 0; // Permite que la columna se procese nuevamente
-                end
+                    INSERTANDO: begin
+                        if (!pulse_consumido) begin
+                            for (int row = 5; row >= 0; row--) begin
+                                if (board[row][col_insertar] == 3'b000) begin
+                                    board[row][col_insertar] <= (jugador == 2'b01) ? 3'b001 : 3'b010;
+                                    pulse_buffer[col_insertar] <= 1'b0;
+                                    pulse_consumido <= 1;
+                                    inserted_flag <= 1;
+                                    cooldown_counter <= 0;
+                                    state <= COOLDOWN;
+                                    break;
+                                end
+                            end
+
+                            // Si la columna está llena, se limpia el pulso y regresa a IDLE
+                            if (board[0][col_insertar] != 3'b000) begin
+                                pulse_buffer[col_insertar] <= 1'b0;
+                                state <= IDLE;
+                            end
+                        end
+                    end
+
+                    COOLDOWN: begin
+                        // Tiempo de espera para evitar rebotes
+                        if (cooldown_counter >= 12_500_000) begin
+                            cooldown_counter <= 0;
+                            state <= IDLE;
+                        end else begin
+                            cooldown_counter <= cooldown_counter + 1;
+                        end
+                    end
+                endcase
             end
         end
     end
