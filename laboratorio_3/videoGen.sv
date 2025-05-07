@@ -19,14 +19,16 @@ module videoGen (
     logic [6:0] cy;   // Coordenada vertical dentro de la celda
 
     always_comb begin
-        red   = 8'h00;    // Inicializamos los valores a negro
+        // Inicialización de colores (negro por defecto)
+        red   = 8'h00;
         green = 8'h00;
         blue  = 8'h00;
 
-        col = x / CELL_W;   // Calculamos la columna en la que estamos
-        row = y / CELL_H;   // Calculamos la fila en la que estamos
-        cx = x % CELL_W;    // Coordenada horizontal dentro de la celda
-        cy = y % CELL_H;    // Coordenada vertical dentro de la celda
+        // Cálculo de columna y fila
+        col = x / CELL_W;
+        row = y / CELL_H;
+        cx = x % CELL_W;
+        cy = y % CELL_H;
 
         // Verificamos si las coordenadas caen dentro del tablero
         if (col < NUM_COLS && row < NUM_ROWS) begin
@@ -38,13 +40,18 @@ module videoGen (
             end else begin
                 // Dependiendo del valor en el tablero, cambiamos el color
                 case (board[row][col])
-                    1: begin
+                    3'b001: begin
                         red   = 8'hFF;  // Rojo
                         green = 8'h00;
                         blue  = 8'h00;
                     end
-                    2: begin
+                    3'b010: begin
                         red   = 8'hFF;  // Amarillo
+                        green = 8'hFF;
+                        blue  = 8'h00;
+                    end
+                    3'b011: begin
+                        red   = 8'h00;  // Verde (cuando se detecta un ganador)
                         green = 8'hFF;
                         blue  = 8'h00;
                     end

@@ -17,10 +17,12 @@ module main (
 
     logic [6:0] sw_rising_edge;
     logic [6:0] sw_falling_edge;
-    logic [2:0] board [5:0][6:0]; // 6 filas, 7 columnas (para Conecta 4)
-    logic [1:0] jugador;           // Jugador actual
-    logic inserted;                // Señal de ficha insertada
-    logic juego_terminado;         // Señal para indicar si el juego terminó
+    logic [2:0] board_logic [5:0][6:0];   // Tablero de gameLogic
+    logic [2:0] board_winner [5:0][6:0];  // Tablero de checkWinner
+    logic [2:0] board_out [5:0][6:0];     // Tablero final para videoGen
+    logic [1:0] jugador;                  
+    logic inserted;                      
+    logic juego_terminado;                
 
     // PLL para generar vgaclk
     clkpll pll_inst (
@@ -38,14 +40,6 @@ module main (
         .rising_edge (sw_rising_edge)
     );
     
-    // Detector de flanco de bajada (por si quieres usarlo después)
-    falling_edge_detector faldet_inst (
-        .clk          (vgaclk),
-        .reset        (rst),
-        .signal_in    (sw),
-        .falling_edge (sw_falling_edge)
-    );
-
     // Controlador VGA
     vgaController vga_inst (
         .vgaclk  (vgaclk),
@@ -70,19 +64,47 @@ module main (
     gameLogic game_inst (
         .clk            (vgaclk),
         .rst            (rst),
-        .pulses         (sw_rising_edge),  // Conectamos los flancos de subida
-        .jugador        (jugador),         // Jugador actual
-        .juego_terminado(juego_terminado), // Si el juego ha terminado
-        .inserted       (inserted),        // Señal de ficha insertada
-        .board          (board)            // Tablero del juego
+        .pulses         (sw_rising_edge),
+        .jugador        (jugador),
+        .juego_terminado(juego_terminado),
+        .inserted       (inserted),
+        .board          (board_logic)  // Tablero generado por la lógica
     );
 
-    // Generador de video: solo dibuja en pantalla
+    // Verificación de ganador
+    checkWinner winner_inst (
+        .clk             (vgaclk),
+        .rst             (rst),
+        .board           (board_logic),
+        .board_out       (board_winner),
+        .juego_terminado (juego_terminado)
+    );
+
+    // MUX para seleccionar el tablero final
+    always_comb begin
+        if (juego_terminado) begin
+            // Si hay un ganador, el tablero ganador se muestra
+            for (int i = 0; i < 6; i++) begin
+                for (int j = 0; j < 7; j++) begin
+                    board_out[i][j] = board_winner[i][j];
+                end
+            end
+        end else begin
+            // Caso normal, se muestra el tablero de la lógica
+            for (int i = 0; i < 6; i++) begin
+                for (int j = 0; j < 7; j++) begin
+                    board_out[i][j] = board_logic[i][j];
+                end
+            end
+        end
+    end
+
+    // Generador de video
     videoGen video_inst (
         .vgaclk (vgaclk),
         .x      (x),
         .y      (y),
-        .board  (board),
+        .board  (board_out),
         .red    (red),
         .green  (green),
         .blue   (blue)
