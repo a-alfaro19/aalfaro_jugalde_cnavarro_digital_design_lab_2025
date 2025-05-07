@@ -1,46 +1,44 @@
 module DisplayController (
-    input logic [3:0] tens,    // Dígito de decenas (BCD)
-    input logic [3:0] ones,    // Dígito de unidades (BCD)
-    output logic [6:0] seg,    // Segmentos del display
-    output logic [3:0] an      // Ánodos de control
+    input  logic        clk,
+    input  logic        rst,
+    input  logic [3:0]  segundos_unidades,
+    input  logic [3:0]  segundos_decenas,
+    output logic [6:0]  display_unidades,  // Salida para el display de unidades
+    output logic [6:0]  display_decenas    // Salida para el display de decenas
 );
 
-    // Registros internos
-    logic [1:0] sel;           // Selector de display
-    logic [6:0] seg_tens;      // Segmentos para decenas
-    logic [6:0] seg_ones;      // Segmentos para unidades
-    logic [15:0] refresh_cnt;  // Contador de refresco
-
-    // Convertidores BCD a 7 segmentos
-    BCD_to_7Seg convertidor_decenas (
-        .bcd(tens),
-        .seg(seg_tens)
-    );
-
-    BCD_to_7Seg convertidor_unidades (
-        .bcd(ones),
-        .seg(seg_ones)
-    );
-
-
-    // Multiplexación de displays
-    assign sel = refresh_cnt[15:14];  // Control de velocidad
-
+    // ===============================
+    // Decodificación para 7 segmentos
+    // ===============================
     always_comb begin
-        case(sel)
-            2'b00: begin  // Mostrar unidades
-                an = 4'b1110;    // AN0 activo
-                seg = seg_ones;
-            end
-            2'b01: begin  // Mostrar decenas
-                an = 4'b1101;    // AN1 activo
-                seg = seg_tens;
-            end
-            default: begin
-                an = 4'b1111;    // Todos apagados
-                seg = 7'b1111111;
-            end
+        // Decodificación del dígito de unidades (Ánodo Común, 0 = encendido)
+        case (segundos_unidades)
+            4'd0: display_unidades = 7'b1000000; // 0
+            4'd1: display_unidades = 7'b1111001; // 1
+            4'd2: display_unidades = 7'b0100100; // 2
+            4'd3: display_unidades = 7'b0110000; // 3
+            4'd4: display_unidades = 7'b0011001; // 4
+            4'd5: display_unidades = 7'b0010010; // 5
+            4'd6: display_unidades = 7'b0000010; // 6
+            4'd7: display_unidades = 7'b1111000; // 7
+            4'd8: display_unidades = 7'b0000000; // 8
+            4'd9: display_unidades = 7'b0010000; // 9
+            default: display_unidades = 7'b1111111; // Apagado
+        endcase
+        
+        // Decodificación del dígito de decenas (Ánodo Común, 0 = encendido)
+        case (segundos_decenas)
+            4'd0: display_decenas = 7'b1000000; // 0
+            4'd1: display_decenas = 7'b1111001; // 1
+            4'd2: display_decenas = 7'b0100100; // 2
+            4'd3: display_decenas = 7'b0110000; // 3
+            4'd4: display_decenas = 7'b0011001; // 4
+            4'd5: display_decenas = 7'b0010010; // 5
+            4'd6: display_decenas = 7'b0000010; // 6
+            4'd7: display_decenas = 7'b1111000; // 7
+            4'd8: display_decenas = 7'b0000000; // 8
+            4'd9: display_decenas = 7'b0010000; // 9
+            default: display_decenas = 7'b1111111; // Apagado
         endcase
     end
-
 endmodule
