@@ -1,0 +1,43 @@
+# Archivos objeto y ejecutables
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+# Archivos de salida de QEMU o emuladores
+*.core
+*.dump
+
+# Archivos temporales de compilación
+*.d
+*.out
+*.log
+
+# Archivos específicos del linker
+*.ld
+
+# Archivos de backup
+*~
+*.swp
+*.bak
+
+# Directorios de compilación
+/build/
+/obj/
+/bin/
+
+# Archivos de VSCode o IDEs
+.vscode/
+*.code-workspace
+
+# Archivos de mGBA (saves, estados, etc.)
+*.sav
+*.srm
+*.cht
+*.state
+
+# Archivos de DevKitPro/devkitARM si estás usando esa estructura
+/build/
+*.gba
