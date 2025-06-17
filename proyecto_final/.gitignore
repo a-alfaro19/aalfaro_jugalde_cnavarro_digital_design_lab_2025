@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-# Archivos y carpetas de resultados
-output_files/
-simulation/
-incremental_db/
-db/
-
-# Archivos de caché y temporales
-*.cdb
-*.sdb
-*.tmp
-*.log
-*.sta
-*.syn
-*.fit
-*.jic
-*.sof
-*.map
-*.rpt
-*.bak
-
-# Archivos de base de datos
-*.db
-
-# Archivos de simulación generados
-*.vcd
-*.wlf
-
-# Configuración de editor
-.vscode/
-.idea/
-.settings/
-
 # Archivos objeto y ejecutables
 *.o
 *.elf
@@ -74,6 +41,3 @@ db/
 # Archivos de DevKitPro/devkitARM si estás usando esa estructura
 /build/
 *.gba
-
-=======
->>>>>>> bde1478042ad4e92b648eab050b2c91839ca0f36
