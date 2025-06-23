@@ -3,7 +3,7 @@ module datapath(input logic clk, reset,
 	input logic RegWrite,
 	input logic [1:0] ImmSrc,
 	input logic ALUSrc,
-	input logic [1:0] ALUControl,
+	input logic [2:0] ALUControl,
 	input logic MemtoReg,
 	input logic PCSrc,
 	output logic [3:0] ALUFlags,
@@ -19,8 +19,8 @@ logic [3:0] RA1, RA2;
 // next PC logic
 mux2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);
 flopr #(32) pcreg(clk, reset, PCNext, PC);
-adder #(32) pcadd1(PC, 32'b001, PCPlus4);
-adder #(32) pcadd2(PCPlus4, 32'b001, PCPlus8);
+adder #(32) pcadd1(PC, 32'b100, PCPlus4);
+adder #(32) pcadd2(PCPlus4, 32'b100, PCPlus8);
 
 // register file logic
 mux2 #(4) ra1mux(Instr[19:16], 4'b1111, RegSrc[0], RA1);
@@ -35,6 +35,6 @@ extend ext(Instr[23:0], ImmSrc, ExtImm);
 
 // ALU logic
 mux2 #(32) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
-alu alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
+alu alu(SrcA, SrcB, ALUControl, Instr[11:7], Instr[6:5], ALUResult, ALUFlags);
 
 endmodule
