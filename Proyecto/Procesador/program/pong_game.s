@@ -41,23 +41,23 @@ init_game:
 // Leer botones
 // ---------------------------
 read_inputs:
-    LDR r0, =0x40000000
-    LDR r1, [r0]        // J1 arriba
+    LDR r0, =0x00000000
+    LDR r1, [r0]
     CMP r1, #1
     SUBEQ r4, r4, #2
 
-    LDR r0, =0x40000004
-    LDR r1, [r0]        // J1 abajo
+    LDR r0, =0x00000004
+    LDR r1, [r0]
     CMP r1, #1
     ADDEQ r4, r4, #2
 
-    LDR r0, =0x40000008
-    LDR r1, [r0]        // J2 arriba
+    LDR r0, =0x00000008
+    LDR r1, [r0]
     CMP r1, #1
     SUBEQ r5, r5, #2
 
-    LDR r0, =0x4000000C
-    LDR r1, [r0]        // J2 abajo
+    LDR r0, =0x0000000C
+    LDR r1, [r0]
     CMP r1, #1
     ADDEQ r5, r5, #2
     BX lr
@@ -66,9 +66,9 @@ read_inputs:
 // Actualizar paletas
 // ---------------------------
 update_paddles:
-    LDR r0, =0x40000010
+    LDR r0, =0x00000010
     STR r4, [r0]
-    LDR r0, =0x40000014
+    LDR r0, =0x00000014
     STR r5, [r0]
     BX lr
 
@@ -76,13 +76,12 @@ update_paddles:
 // Mover bola
 // ---------------------------
 move_ball:
-    ADD r6, r6, r8  // Y += velY
-    ADD r7, r7, r9  // X += velX
+    ADD r6, r6, r8
+    ADD r7, r7, r9
 
-    // Rebote vertical
     CMP r6, #0
     BLT invert_velY
-    CMP r6, #120     // Supongamos altura 128
+    CMP r6, #120
     BGT invert_velY
     BX lr
 
@@ -94,17 +93,14 @@ invert_velY:
 // Detección colisión y puntos
 // ---------------------------
 check_collision:
-    // Colisión con J1 (x <= 2)
     CMP r7, #2
     BNE check_J2
 
-    // Si Y de bola dentro de rango de paleta
     SUB r0, r6, r4
     CMP r0, #10
-    MOVLE r9, #1   // Rebotar derecha
+    MOVLE r9, #1
     BXLE lr
 
-    // Si no, punto J2
     ADD r11, r11, #1
     BL reset_ball
     BX lr
@@ -126,33 +122,32 @@ end_check:
     BX lr
 
 // ---------------------------
-// Resetear bola tras punto
+// Resetear bola
 // ---------------------------
 reset_ball:
     MOV r6, #60
     MOV r7, #80
     MOV r8, #1
-    MOV r9, #-1     // Cambiar dirección
+    MOV r9, #-1
     BX lr
 
 // ---------------------------
 // Mostrar en pantalla
 // ---------------------------
 update_display:
-    LDR r0, =0x40000010
+    LDR r0, =0x00000010
     STR r4, [r0]
-    LDR r0, =0x40000014
+    LDR r0, =0x00000014
     STR r5, [r0]
 
-    // Escribir bola
-    LSL r1, r6, #16   // Y << 16
+    LSL r1, r6, #16
     ORR r1, r1, r7
-    LDR r0, =0x40000018
+
+    LDR r0, =0x00000018
     STR r1, [r0]
 
-    // Puntaje
-    LDR r0, =0x4000001C
+    LDR r0, =0x0000001C
     STR r10, [r0]
-    LDR r0, =0x40000020
+    LDR r0, =0x00000020
     STR r11, [r0]
     BX lr

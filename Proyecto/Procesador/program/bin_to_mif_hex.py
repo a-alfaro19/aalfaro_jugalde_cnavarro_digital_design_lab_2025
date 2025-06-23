@@ -19,16 +19,16 @@ def bin_to_mif(input_file, output_file, width=32, depth=65536):
         f.write(f"WIDTH={width};\n")
         f.write(f"DEPTH={depth};\n\n")
         f.write("ADDRESS_RADIX=UNS;\n")
-        f.write("DATA_RADIX=UNS;\n\n")
+        f.write("DATA_RADIX=HEX;\n\n")
         f.write("CONTENT BEGIN\n")
         for i, word in enumerate(words):
-            f.write(f"    {i:<6} : {word};\n")
+            f.write(f"    {i:<6} : {word:08X};\n")
         if len(words) < depth:
-            f.write(f"    [{len(words)}..{depth - 1}] : 0;\n")
+            f.write(f"    [{len(words)}..{depth - 1}] : 00000000;\n")
         f.write("END;\n")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Uso: python3 bin_to_mif.py entrada.bin salida.mif")
+        print("Uso: python3 bin_to_mif_hex.py entrada.bin salida.mif")
     else:
         bin_to_mif(sys.argv[1], sys.argv[2])
