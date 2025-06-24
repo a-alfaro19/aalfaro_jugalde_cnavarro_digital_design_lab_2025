@@ -26,8 +26,14 @@ module RAM2(
 
     // Escrituras sincrónicas
     always @(posedge clk) begin
-        if (we_a) mem[addr_a] <= wd_a;
-        if (we_b) mem[addr_b] <= wd_b;
+        if (we_a) begin
+            mem[addr_a] <= wd_a;
+            $display("WRITE_A: addr = %0d (0x%h) | data = 0x%h", addr_a, addr_a, wd_a);
+        end
+        if (we_b) begin
+            mem[addr_b] <= wd_b;
+            $display("WRITE_B: addr = %0d (0x%h) | data = 0x%h", addr_b, addr_b, wd_b);
+        end
     end
 
     // Lecturas asíncronas

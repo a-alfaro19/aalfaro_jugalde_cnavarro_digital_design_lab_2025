@@ -50,6 +50,10 @@ module top(
         .out_puntaje1(ram_puntaje_j1),
         .out_puntaje2(ram_puntaje_j2)
     );
+	 
+	 always @(posedge clk) begin
+    $display("PC = %h | DataAdr = %h | MemWrite = %b | WriteData = %h", PC, DataAdr, MemWrite, WriteData);
+	end
 
     // Asignar las salidas
     assign paleta_j1_y = ram_paleta_j1_y[7:0];
