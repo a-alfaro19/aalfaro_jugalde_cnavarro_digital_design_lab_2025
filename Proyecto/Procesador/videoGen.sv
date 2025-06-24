@@ -1,54 +1,46 @@
-module videoGen_pong (
-    input  logic        vgaclk,
-    input  logic [9:0]  x,
-    input  logic [9:0]  y,
-    input  logic [9:0]  paddle1_y,   // Y centro de la paleta izquierda
-    input  logic [9:0]  paddle2_y,   // Y centro de la paleta derecha
-    input  logic [9:0]  ball_x,      // X centro de la bola
-    input  logic [9:0]  ball_y,      // Y centro de la bola
-    output logic [7:0]  red,
-    output logic [7:0]  green,
-    output logic [7:0]  blue
+// Generador de video: determina el color RGB de cada píxel según posición y estado del juego.
+module videoGen (
+    input  logic        blank_b,        // Activo alto dentro de región visible
+    input  logic [9:0]  x, y,           // Coordenadas del píxel actual
+    input  logic [83:0] board_state,    // (Opcional) Estado del juego / frame buffer
+    input  logic [83:0] winner_play,    // (Opcional) Indicadores de casillas ganadoras
+    input  logic        theres_a_winner,// Indica si hay un ganador
+    input  logic [2:0]  current_state,  // (Opcional) Estado de la máquina de estados del juego
+    output logic [7:0]  r, g, b         // Componentes de color del píxel (0-255)
 );
 
-    // Parámetros de tamaño
-    localparam SCREEN_W   = 640;
-    localparam SCREEN_H   = 480;
-    localparam PADDLE_W   = 10;
-    localparam PADDLE_H   = 60;
-    localparam BALL_SIZE  = 8;
-
-    // Posiciones de las paletas
-    localparam PADDLE1_X  = 30;
-    localparam PADDLE2_X  = SCREEN_W - 30 - PADDLE_W;
-
+    // Pixel fuera de área visible -> negro
     always_comb begin
-        red   = 8'h00;
-        green = 8'h00;
-        blue  = 8'h00;
+        if (!blank_b) begin
+            r = 8'd0;
+            g = 8'd0;
+            b = 8'd0;
+        end else begin
+            // Color de fondo por defecto (negro)
+            r = 8'd0;
+            g = 8'd0;
+            b = 8'd0;
 
-        // Paleta izquierda
-        if (x >= PADDLE1_X && x < PADDLE1_X + PADDLE_W &&
-            y >= paddle1_y - (PADDLE_H/2) && y < paddle1_y + (PADDLE_H/2)) begin
-            red   = 8'hFF;
-            green = 8'hFF;
-            blue  = 8'hFF;
-        end
+            // Paleta izquierda (blanca, ancho ~10px, centrada verticalmente)
+            if ((x < 10) && (y > 210) && (y < 270)) begin
+                r = 8'hFF; g = 8'hFF; b = 8'hFF;
+            end
 
-        // Paleta derecha
-        else if (x >= PADDLE2_X && x < PADDLE2_X + PADDLE_W &&
-                 y >= paddle2_y - (PADDLE_H/2) && y < paddle2_y + (PADDLE_H/2)) begin
-            red   = 8'hFF;
-            green = 8'hFF;
-            blue  = 8'hFF;
-        end
+            // Paleta derecha (blanca, ancho ~10px, centrada verticalmente)
+            if ((x >= 630) && (y > 210) && (y < 270)) begin
+                r = 8'hFF; g = 8'hFF; b = 8'hFF;
+            end
 
-        // Bola
-        else if (x >= ball_x - (BALL_SIZE/2) && x < ball_x + (BALL_SIZE/2) &&
-                 y >= ball_y - (BALL_SIZE/2) && y < ball_y + (BALL_SIZE/2)) begin
-            red   = 8'hFF;
-            green = 8'hFF;
-            blue  = 8'hFF;
+            // Pelota en el centro (8x8 píxeles)
+            if ((x >= 312 && x <= 319) && (y >= 236 && y <= 243)) begin
+                if (theres_a_winner) begin
+                    // Si hay ganador, pintar la pelota de verde
+                    r = 8'h00; g = 8'hFF; b = 8'h00;
+                end else begin
+                    // Pelota blanca normal
+                    r = 8'hFF; g = 8'hFF; b = 8'hFF;
+                end
+            end
         end
     end
 
